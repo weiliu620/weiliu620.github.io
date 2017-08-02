@@ -1,12 +1,13 @@
 
 ## Overall impression
 
-- Multi-modality
-- RL can be used in ML/CV problem, too, if we define the problem carefully
-- high level image understanding are more popular. Lower level vision is less. IT's OK to have some errors at lower level, and we can use context and other modality information at higher level for better inference.
-
+- Multi-modality: image analysis together with language and text mining.
+- RL can be used in ML/CV problem, too, if we define the problem carefully.
+- high level image understanding are more popular. Lower level vision is less. It's OK to have some errors at lower level, and we can use context and other modality information at higher level for better inference.
 
 ### Robobarista: Object Part-based Transfer of Manipulation Trajectories from Crowd-sourcing in 3D Pointclouds
+
+Not this year's CVPR paper but got form the robotics workshop speaker.
 
 Scene understanding and part detection is not sufficient for robot manipulation. This paper learn direct perception base on affordance. [search 'affordance']. Also this paper use 'learning from demonstration', but learn a single action is impossible because environment has many variations.
 
