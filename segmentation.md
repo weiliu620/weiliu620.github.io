@@ -1,9 +1,3 @@
----
-layout: post
-title:  "Semantic Segmentation, Edge Detection"
-date:   2016-02-10 20:33:35 -0500
-categories: jekyll update
----
 
 Now it's time to have a dedicated page for segmentation.
 

@@ -1,9 +1,4 @@
----
-layout: post
-title:  "Notes for Some Deep Learning Papers"
-date:   2016-02-10 20:33:35 -0500
-categories: jekyll update
----
+
 ### [Generative Adversarial Nets](http://arxiv.org/abs/1406.2661)
 This paper proposed a model to generate new examples given existing data. The model includes a generative model $$G$$ and a discriminative model $$D$$. The model $$G(z)$$ generates new example $$x$$ from random input $$z$$, and model $$D(x)$$ output the probability of the example $$x$$ being from the true data distribution.
 
@@ -206,7 +201,7 @@ The discriminator take the hidden variable z as input (either from the encoder o
 
 LW: if that is the true reason of using Adversarial, we can also think about expectation Propagation, which seems to match q(z) to the whole P(z), too.
 
-The optimization is iterative. In both the Adversarial optimization step and the the AE step, the encoder is optimized. In Adversarial step, encoder is optimized to match q(z) to p(z). In AE step, encoder is optimized to minimize the reconstruction error. In other Adversarial+AE work, there is often a trade off between the two goal of optimization, but here the two optimization step are done iteratively. How to achieve the trade-off for the encoder? 
+The optimization is iterative. In both the Adversarial optimization step and the the AE step, the encoder is optimized. In Adversarial step, encoder is optimized to match q(z) to p(z). In AE step, encoder is optimized to minimize the reconstruction error. In other Adversarial+AE work, there is often a trade off between the two goal of optimization, but here the two optimization step are done iteratively. How to achieve the trade-off for the encoder?
 
 ### Adversarially Learned Inference
 Given data, generate hidden representations; Given hidden z, generate data. Use discriminator net to tell the two pairs apart.
