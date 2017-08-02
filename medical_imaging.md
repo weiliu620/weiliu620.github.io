@@ -1,8 +1,4 @@
----
-layout: post
-title:  "Deep Learning in Medical Imaging"
-date:   2016-02-26 20:33:35 -0500
----
+
 
 ### Large-Scale Automatic Reconstruction of Neuronal Processes from Electron Microscopy Images
 
@@ -226,7 +222,7 @@ Used convolutional sparse coding + SPM + SVM for image classification. CSC is ba
 ### A Fully Convolutional Neural Network for Cardiac Segmentation in Short-Axis MRI
 
 ### V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation
-A 2016 paper on full 3D convnet. 
+A 2016 paper on full 3D convnet.
 
 
 
