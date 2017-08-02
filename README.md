@@ -1,3 +1,6 @@
+---
+title: machine learning and computer vision notes
+---
 
 Some reading notes for deep learning and general machine learning, vision, and image analysis.
 

@@ -1,3 +1,6 @@
+---
+title: general reading notes
+---
 
 ### [Generative Adversarial Nets](http://arxiv.org/abs/1406.2661)
 This paper proposed a model to generate new examples given existing data. The model includes a generative model $$G$$ and a discriminative model $$D$$. The model $$G(z)$$ generates new example $$x$$ from random input $$z$$, and model $$D(x)$$ output the probability of the example $$x$$ being from the true data distribution.

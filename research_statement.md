@@ -1,3 +1,6 @@
+---
+title: research statement
+---
 
 My main research interests is the design of machine learning and pattern recognition algorithms to solve the practical industrial computer vision problems. I am interested in methods that learn from both annotated data in public domain, and problem-specific data with sparse or no annotation within the industry. I am also interested the algorithms that combine the rich, manually designed feature representations from domain experts, and the recent deep learning methods. By integrating them, we can get the most from domain knowledge and sparse training data.
 

@@ -1,4 +1,6 @@
-
+---
+title: misc notes
+---
 
 ### Semantic Component Analysis
 Each component is constrained to have semantic meanings. See videolecture.net. Can be used for multi-channel image decomposition/segmentation. (energy dispersion imaging)

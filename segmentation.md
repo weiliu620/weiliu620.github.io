@@ -1,4 +1,6 @@
-
+---
+title: segmentation
+---
 Now it's time to have a dedicated page for segmentation.
 
 ### Fully Convolutional Networks for Semantic Segmentation
