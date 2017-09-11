@@ -42,3 +42,8 @@ Original EQN contains a maximization step over estimated values, and this max st
 
 ### gaussian processes for data-efficient learning in robotics and control
 Use Gaussian process to model the transition probability, derive a closed form expression for expected reward/cost for policy evaluation, and analytic policy gradients for policy improvement.
+
+### Gaussian process dynamic programming.pdf
+Model the value function and state value function as a GP, and use Q-Learning like methods. Also see references in this paper for model-based methods that use GP to approximate the model.
+
+This work also use GP as a policy approximation. 
