@@ -36,5 +36,9 @@ Sent to Tom but haven't read it yet.
 ### Deep Recurrent Q-Learning for Partially Observable MDPs
 Peter Stone's work
 
+
 ### Deep Reinforcement Learning with Double Q-learning
-Original EQN contains a maximization step over estimated values, and this max step is an biased towards higher values. The paper shows DQN has overestimates even when network is deep and environment is deterministic. 
+Original EQN contains a maximization step over estimated values, and this max step is an biased towards higher values. The paper shows DQN has overestimates even when network is deep and environment is deterministic.
+
+### gaussian processes for data-efficient learning in robotics and control
+Use Gaussian process to model the transition probability, derive a closed form expression for expected reward/cost for policy evaluation, and analytic policy gradients for policy improvement.
