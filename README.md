@@ -13,7 +13,6 @@ Some reading notes for deep learning and general machine learning, vision, and i
 
 ## [Medical imaging](medical_imaging.md)
 
-
 ## [Reinforcement Learning and Robotics](reinforcement_learning_robotics.md)
 
 ## [Segmentation](segmentation.md)
