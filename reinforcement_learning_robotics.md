@@ -1,6 +1,6 @@
----
+<!-- ---
 title: RL and Robotics
----
+--- -->
 
 ### Deep Learning for Detecting Robotic Grasps
 
@@ -54,4 +54,4 @@ This work also use GP as a policy approximation.
 Use GP as approximation of the model. Learn model from data. Model-based policy iteration.
 
 ### Probabilistic Inference for Fast Learning in Control
-Not like above paper, this work directly optimize policy. 
+Not like above paper, this work directly optimize policy.
