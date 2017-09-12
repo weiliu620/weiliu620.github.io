@@ -1,0 +1,2 @@
+### Texture Synthesis Using Convolutional Neural Networks
+Use pretrained VGG network as a feature embedding method. Given target image, extract features, and compute Gram matrix $$G$$ for each layer $$l$$. The entry $$G_{ij}$$ is the inner product of the vectorized feature map $$F_i$$ and $$F_j$$. The Gram matrix does not have spatial information, because texture, by definition, is spatial invariant, and the measurement does not need spatial information.
