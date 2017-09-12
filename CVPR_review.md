@@ -1,6 +1,7 @@
 ---
 title: CVPR review
 description: A quick review of the papers worth reading in CVPR 2017
+mathjax: true
 ---
 
 ## Overall impression
