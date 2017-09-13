@@ -1,3 +1,8 @@
+---
+title: CVPR review
+description: A quick review of the papers worth reading in CVPR 2017
+mathjax: true
+---
 
 ## Overall impression
 
@@ -126,3 +131,9 @@ Malik's paper. Also saw it on his workshop talk.
 ### Collaborative Deep Reinforcement Learning for Joint Object Search
 
 ### Image-to-Image Translation with Conditional Adversarial Networks
+
+### G2DeNet: Global Gaussian Distribution Embedding Network and Its Application to Visual Recognition
+
+some structure layers is trainable and can be inserted in to DNN. This paper proposes a Gaussian embedding layer, which model the probabilistic Distribution of the filter output. This paper may have some references about other global trainable layers. Decompose the covariance matrix into sub-matrices.
+
+$$x^2 + y^2$$
