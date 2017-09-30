@@ -65,3 +65,11 @@ Not like above paper, this work directly optimize policy.
 Proposed to use Gaussian process as an representation of the transition model. Based on GP, calculate the marginal distribution of state, and use that to calculate analytical form of the value function. Then, derive an analytical form for the gradient of the value function with regard to the the policy function's parameters.
 
 The cost/value function is defined such that the expectation with respect to the state distribution is in closed form. This need cost function be in a special form. In this paper it's exponential function of (x - x_target). Such different is different from OpenAI gym, which gives the reward when each action is taken. the environment in gym is like a blackbox, and algorithm designer cannot change definition of reward. On the other hand, the method used in this paper make some sense: if in practice we know the optimal state of the problem, we can define the cost function based on the difference of current state and optimal state. This is similar to my previous thinking: redefine the reward function based on the current states and target states.  
+
+
+
+### On-policy and Off-policy learning
+
+On-policy evaluates and improves the policy that is used to generate the data.
+
+From Stackoverflow, off-policy learning such as Q-learning may not be stable, due to the max operation, especially when using functional approximation in case of continuous state. However, recent DQN use replay buffer, and make learning off-policy model more stable. 
