@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Dawei’s random notes on machine learning and computer vision | Some notes of reading papers and attending conferences.</title>
+<meta property="og:title" content="Dawei’s random notes on machine learning and computer vision" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Some notes of reading papers and attending conferences." />
+<meta property="og:description" content="Some notes of reading papers and attending conferences." />
+<link rel="canonical" href="http://localhost:4000/reinforcement_learning_robotics.html" />
+<meta property="og:url" content="http://localhost:4000/reinforcement_learning_robotics.html" />
+<meta property="og:site_name" content="Dawei’s random notes on machine learning and computer vision" />
+<script type="application/ld+json">
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/reinforcement_learning_robotics.html","publisher":null,"image":null,"headline":"Dawei’s random notes on machine learning and computer vision","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e936c88afd85f505dc8ecee029c7f4cd5b96f73a">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Dawei's random notes on machine learning and computer vision</h1>
+        <p>Some notes of reading papers and attending conferences. </p>
+
+        
+          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <!-- ---
+title: RL and Robotics
+--- -->
+
+<h3 id="deep-learning-for-detecting-robotic-grasps">Deep Learning for Detecting Robotic Grasps</h3>
+
+<h3 id="learning-hand-eye-coordination-for-robotic-grasping-with-deep-learning-and-large-scale-data-collection">Learning Hand-Eye Coordination for Robotic Grasping with Deep Learning and Large-Scale Data Collection</h3>
+
+<h3 id="on-learning-to-think-algorithmic-information-theory-for-novel-combinations-of-reinforcement-learning-controllers-and-recurrent-neural-world-models">On Learning to Think: Algorithmic Information Theory for Novel Combinations of Reinforcement Learning Controllers and Recurrent Neural World Models</h3>
+
+<h3 id="compressed-network-search-finds-complex-neural-controllers-with-a-million-weights">Compressed Network Search Finds Complex Neural Controllers with a Million Weights</h3>
+
+<h3 id="value-iteration-network">Value Iteration Network</h3>
+<p>If action moves agent locally, then can be computed with convolution.</p>
+
+<h3 id="feedback-network">feedback Network</h3>
+
+<p>Iterative representations based on feedback from previous iteration’s output. Benefits: early prediction, hierarchical output (taxonomy), provide basis for curriculum learning. [what is it]</p>
+
+<h3 id="cognitive-mapping-and-planning-for-visual-navigation">Cognitive Mapping and Planning for Visual Navigation</h3>
+
+<p>J. Malik’s lab. Mapping is driven by the need of planner. Spatial memory, can plan with incomplete observations of the world. Agent has a belief map of the world. [heavy in mapping, skip it for now]</p>
+
+<h3 id="deepmpc-learning-deep-latent-features-for-model-predictive-control">DeepMPC: Learning Deep Latent Features for Model Predictive Control</h3>
+
+<p>Ian Lenz’s paper.</p>
+
+<h3 id="data-efficient-reinforcement-learning-with-probabilistic-model-predictive-control">Data-Efficient Reinforcement Learning with Probabilistic Model Predictive Control</h3>
+
+<p>Sent to Tom but haven’t read it yet.</p>
+
+<h3 id="gaussian-process-model-based-predictive-control">Gaussian Process Model Based Predictive Control</h3>
+
+<h3 id="predictive-control-with-gaussian-process-models">Predictive control with Gaussian process models</h3>
+
+<h3 id="deep-recurrent-q-learning-for-partially-observable-mdps">Deep Recurrent Q-Learning for Partially Observable MDPs</h3>
+<p>Peter Stone’s work</p>
+
+<h3 id="deep-reinforcement-learning-with-double-q-learning">Deep Reinforcement Learning with Double Q-learning</h3>
+<p>Original EQN contains a maximization step over estimated values, and this max step is an biased towards higher values. The paper shows DQN has overestimates even when network is deep and environment is deterministic.</p>
+
+<h3 id="gaussian-processes-for-data-efficient-learning-in-robotics-and-control">gaussian processes for data-efficient learning in robotics and control</h3>
+<p>Use Gaussian process to model the transition probability, derive a closed form expression for expected reward/cost for policy evaluation, and analytic policy gradients for policy improvement.</p>
+
+<p>But since we have Tensorflow and other libraries to calculate the gradient automatically, can we still define GP for the model, analytically derive the expected reward (i.e. value function) and use Tf to calculate and update its gradient?</p>
+
+<h3 id="approximate-dynamic-programming-with-gaussian-processespdf-1998">Approximate Dynamic Programming with Gaussian Processes.pdf (1998)</h3>
+<p>Assuming transition model is know, use GP to approximate both value function V and action-value function Q. With such approximation, Both GPs learn from discrete state and action pairs, but can be evaluated at continuous action value.</p>
+
+<h3 id="gaussian-process-dynamic-programming">Gaussian process dynamic programming</h3>
+<p>Model the value function and state value function as a GP, and use Q-Learning like methods.</p>
+
+<p>This work also use GP as a policy approximation. It is an extension of the above paper in 1998, in that this work also learn the models by using another GP, and online select the state for exploration. The advantage is that we can only explore interesting state and actions along the trajectories, and do not need to sample the regular grid of state and actions like previous paper.  Related to Bayesian optimization and experimental design. In this sense, this GP policy is global, not local.</p>
+
+<p>The first algorithm assumes that model is known, as well as the immediate reward given current state and action. The algorithm does not actually interact with the environment. It just define a set of states sampled from regular grid of state space, and use the assumed transition function to calculate next state and reward. Then use (state, action, new state, reward) to learn Q function approximate by GP.</p>
+
+<h3 id="gaussian-processes-in-reinforcement-learning">Gaussian processes in reinforcement learning</h3>
+<p>Use GP as approximation of the model. Learn model from data. Model-based policy iteration.</p>
+
+<h3 id="probabilistic-inference-for-fast-learning-in-control">Probabilistic Inference for Fast Learning in Control</h3>
+<p>Not like above paper, this work directly optimize policy.</p>
+
+<h3 id="pilco-a-model-based-and-data-efficient-approach-to-policy-search">PILCO/ A Model-Based and Data-Efficient Approach to Policy Search</h3>
+<p>Proposed to use Gaussian process as an representation of the transition model. Based on GP, calculate the marginal distribution of state, and use that to calculate analytical form of the value function. Then, derive an analytical form for the gradient of the value function with regard to the the policy function’s parameters.</p>
+
+<p>The cost/value function is defined such that the expectation with respect to the state distribution is in closed form. This need cost function be in a special form. In this paper it’s exponential function of (x - x_target). Such different is different from OpenAI gym, which gives the reward when each action is taken. the environment in gym is like a blackbox, and algorithm designer cannot change definition of reward. On the other hand, the method used in this paper make some sense: if in practice we know the optimal state of the problem, we can define the cost function based on the difference of current state and optimal state. This is similar to my previous thinking: redefine the reward function based on the current states and target states.</p>
+
+<h3 id="on-policy-and-off-policy-learning">On-policy and Off-policy learning</h3>
+
+<p>On-policy evaluates and improves the policy that is used to generate the data.</p>
+
+<p>From Stackoverflow, off-policy learning such as Q-learning may not be stable, due to the max operation, especially when using functional approximation in case of continuous state. However, recent DQN use replay buffer, and make learning off-policy model more stable.</p>
+
+
+      </section>
+      <footer>
+        
+        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+
+
+  
+  </body>
+</html>

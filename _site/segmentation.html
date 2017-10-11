@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>segmentation | Dawei’s random notes on machine learning and computer vision</title>
+<meta property="og:title" content="segmentation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Some notes of reading papers and attending conferences." />
+<meta property="og:description" content="Some notes of reading papers and attending conferences." />
+<link rel="canonical" href="http://localhost:4000/segmentation.html" />
+<meta property="og:url" content="http://localhost:4000/segmentation.html" />
+<meta property="og:site_name" content="Dawei’s random notes on machine learning and computer vision" />
+<script type="application/ld+json">
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/segmentation.html","publisher":null,"image":null,"headline":"segmentation","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e936c88afd85f505dc8ecee029c7f4cd5b96f73a">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Dawei's random notes on machine learning and computer vision</h1>
+        <p>Some notes of reading papers and attending conferences. </p>
+
+        
+          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <p>Now it’s time to have a dedicated page for segmentation.</p>
+
+<h3 id="fully-convolutional-networks-for-semantic-segmentation">Fully Convolutional Networks for Semantic Segmentation</h3>
+
+<h3 id="hypercolumns-for-object-segmentation-and-fine-grained-localization">Hypercolumns for Object Segmentation and Fine-grained Localization</h3>
+<p>From J. Malik lab, so should read it. Use features at all scales for segmentation. many other tricks, too.</p>
+
+<p>The author thought about possibility of defining a classifier at each pixel, because features do not have spatial information. But to define a location specific classifier for each of 50x50 pixel is too many parameters. So they define a sparser set of classifiers and interpolate to get all pixels. That remind me the U-net paper that just use last 1x1 convolutional layer as classifier, and that amounts to have a classifier at each location?</p>
+
+<p>When using features at all scales of CNN, we get a feature matrix of <script type="math/tex">N\times P</script>, where <script type="math/tex">N</script> is number of pixels and <script type="math/tex">P</script> is total number of features across all scales. Then how about a SVD or a dictionary learning over this feature matrix?</p>
+
+<p>Up-sampling the top layers so the feature map has same resolution with previous layers.</p>
+
+<p>This is a well-written paper. Very readable.</p>
+
+<h3 id="learning-deconvolution-network-for-semantic-segmentation">Learning Deconvolution Network for Semantic Segmentation</h3>
+<p>Yet another segmentation paper.</p>
+
+<h3 id="weakly--and-semi-supervised-learning-of-a-deep-convolutional-network-for-semantic-image-segmentation">Weakly- and Semi-Supervised Learning of a Deep Convolutional Network for Semantic Image Segmentation</h3>
+<p>This one also cites the Fully convnet paper. Particular interesting because it’s weakly supervised.</p>
+
+<h3 id="fully-connected-deep-structured-networks">Fully Connected Deep Structured Networks</h3>
+<p>Image segmentation, too. But have a unified learning framework including the feature learning and segmentation.</p>
+
+<h3 id="mapping-stacked-decision-forests-to-deep-and-sparse-convolutional-neural-networks-for-semantic-segmentation">Mapping Stacked Decision Forests to Deep and Sparse Convolutional Neural Networks for Semantic Segmentation</h3>
+<p>Found it because it cite “Deep neural networks segment neuronal membranes in electron microscopy images”, and it also cite the “U-Net” paper.</p>
+
+<p>Exact mapping from random forest to CNN ,which can be used to initialize CNN with sparse training data. Approximate mapping from CNN to RF, and the RF improve original RF.</p>
+
+<h3 id="deepedge-a-multi-scale-bifurcated-deep-network-for-top-down-contour-detection">DeepEdge: A Multi-Scale Bifurcated Deep Network for Top-Down Contour Detection</h3>
+<p>Shi Jianbo’s second author. Also check out recent Arxiv paper for edge detection.</p>
+
+<h3 id="conditional-random-fields-as-recurrent-neural-networks">Conditional random fields as recurrent neural networks</h3>
+<p>Reformulate mean field approximation by recurrent network. that seems a reminder that old problem (CRF, graph-cut etc) can be re-formulated into a neural network optimization problem, or be re-formulated such that it can be optimized by gradient together with the deep network. Need to read this work.</p>
+
+<h3 id="efficient-inference-in-fully-connected-crfs-with-gaussian-edge-potentials">Efficient Inference in Fully Connected CRFs with Gaussian Edge Potentials</h3>
+
+<p>The dense CRF paper. Define unary potential is defined from conventional features like color, texture or spatial location, and the pairwise potentials are define similar to Boykov: a indicator function for the equality of labels, and a mixture of Gaussian kernels as function of features. Here the neighborhood is not local any more, but includes the whole image field. Naive variational inference need update each pixel with cost of O(N). This paper used an approximation: down sampling image, convolution with kernels, and then upsampling. Also used another approximation called permutohedral lattice so the computation is linear with dimension d.</p>
+
+<p>Code is available on author’s website with python wrapper (which seems have some functions for &gt; 2D images. )</p>
+
+<h3 id="region-based-convolutional-networks-for-accurate-object-detection-and-segmentation">Region-based Convolutional Networks for Accurate Object Detection and Segmentation</h3>
+
+<h3 id="pushing-the-boundaries-of-boundary-detection-using-deep-learning">PUSHING THE BOUNDARIES OF BOUNDARY DETECTION USING DEEP LEARNING</h3>
+
+<h3 id="scribblesup-scribble-supervised-convolutional-networks-for-semantic-segmentation">ScribbleSup/ Scribble-Supervised Convolutional Networks for Semantic Segmentation</h3>
+<p>This paper address the problem of segmentation given only scribble about the interior of regions. The problem is similar to Boykov’s graph cut, and the optimization also include graph-cut. The unary potential includes two parts: one is from the scribble, and another is from the trained CNN. The pairwise potential is defined like Boykov. The graph is defined on superpixels. The optimization alternates between two steps: 1) Given CNN fixed, optimize graph cut problem on superpixels. 2) Given the segmentation labels of the superpixels estimated from graph-cut, train a fully CNN on each pixel.</p>
+
+<h3 id="semantic-image-segmentation-with-deep-convolutional-nets-and-fully-connected-crfs">SEMANTIC IMAGE SEGMENTATION WITH DEEP CONVOLUTIONAL NETS AND FULLY CONNECTED CRFS</h3>
+<p>One of the major CNN+CRF papers.</p>
+
+<h3 id="textonboost-for-image-understanding-multi-class-object-recognition-and-segmentation-by-jointly-modeling-texture">Textonboost for image understanding: Multi-class object recognition and segmentation by jointly modeling texture</h3>
+
+<p>Seems a major work before deep learning, for feature engineering and detection.</p>
+
+<h3 id="multiscale-conditional-random-fields-for-image-labeling">Multiscale conditional random fields for image labeling</h3>
+
+<h3 id="higher-order-conditional-random-fields-in-deep-neural-networks">Higher Order Conditional Random Fields in Deep Neural Networks</h3>
+<p>Currently the PASCSL VOC leaderboard top. Use potentials that include &gt; 2 nodes. 1) use a object detector and use the detection results (foreground after grabcut) as potentials and 2) use superpixel as higher order potential.</p>
+
+<p>Used mean field update, with fully connected CRF. But the GPU algorithm is not clear to me.</p>
+
+<h3 id="fully-connected-deep-structured-networks-1">Fully connected deep structured networks</h3>
+
+<h3 id="generative-image-modeling-using-style-and-structure-adversarial-networks">Generative Image Modeling using Style and Structure Adversarial Networks</h3>
+
+<h3 id="understanding-deep-neural-networks-by-synthetically-generating-the-preferred-stimuli-for-each-of-their-neurons-paper-to-come">Understanding Deep Neural Networks by Synthetically Generating the Preferred Stimuli for Each of Their Neurons (paper to come)</h3>
+
+<h3 id="iterative-instance-segmentation">Iterative Instance Segmentation</h3>
+
+<h3 id="httpwwwinferencevcdilated-convolutions-and-kronecker-factorisation">http://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/</h3>
+
+<h3 id="exploiting-local-structures-with-the-kronecker-layer-in-convolutional-networks">Exploiting Local Structures with the Kronecker Layer in Convolutional Networks</h3>
+
+<h3 id="speeding-up-convolutional-neural-networks-with-low-rank-expansions-2014">Speeding up convolutional neural networks with low rank expansions (2014)</h3>
+
+<h3 id="3d-u-net-learning-dense-volumetric-segmentation-from-sparse-annotation">3D U-Net: Learning Dense Volumetric Segmentation from Sparse Annotation</h3>
+
+
+      </section>
+      <footer>
+        
+        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+
+
+  
+  </body>
+</html>

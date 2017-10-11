@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>CVPR review | Dawei’s random notes on machine learning and computer vision</title>
+<meta property="og:title" content="CVPR review" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A quick review of the papers worth reading in CVPR 2017" />
+<meta property="og:description" content="A quick review of the papers worth reading in CVPR 2017" />
+<link rel="canonical" href="http://localhost:4000/CVPR_review.html" />
+<meta property="og:url" content="http://localhost:4000/CVPR_review.html" />
+<meta property="og:site_name" content="Dawei’s random notes on machine learning and computer vision" />
+<script type="application/ld+json">
+{"name":null,"description":"A quick review of the papers worth reading in CVPR 2017","author":null,"@type":"WebPage","url":"http://localhost:4000/CVPR_review.html","publisher":null,"image":null,"headline":"CVPR review","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e936c88afd85f505dc8ecee029c7f4cd5b96f73a">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Dawei's random notes on machine learning and computer vision</h1>
+        <p>Some notes of reading papers and attending conferences. </p>
+
+        
+          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <h2 id="overall-impression">Overall impression</h2>
+
+<ul>
+  <li>Multi-modality: image analysis together with language and text mining.</li>
+  <li>RL can be used in ML/CV problem, too, if we define the problem carefully.</li>
+  <li>high level image understanding are more popular. Lower level vision is less. It’s OK to have some errors at lower level, and we can use context and other modality information at higher level for better inference.</li>
+</ul>
+
+<h3 id="robobarista-object-part-based-transfer-of-manipulation-trajectories-from-crowd-sourcing-in-3d-pointclouds">Robobarista: Object Part-based Transfer of Manipulation Trajectories from Crowd-sourcing in 3D Pointclouds</h3>
+
+<p>Not this year’s CVPR paper but got form the robotics workshop speaker.</p>
+
+<p>Scene understanding and part detection is not sufficient for robot manipulation. This paper learn direct perception base on affordance. [search ‘affordance’]. Also this paper use ‘learning from demonstration’, but learn a single action is impossible because environment has many variations.</p>
+
+<p>The goal of the task is mapping a point cloud and a language to a trajectory. First, trajectory should not be represented in configuration space (prone to errors when aligned with object), but in task space, and in principal axis based coordinate frame. The cost function is defined by the dynamic time warping function of the target trajectory and the trajectory to be optimized. DTW is a method to match two time series in a nonlinear way.</p>
+
+<h3 id="densely-connected-convolutional-networks">Densely Connected Convolutional Networks</h3>
+
+<p>Best paper of CVPR 2017.</p>
+
+<h3 id="end-to-end-driving-in-a-realistic-racing-game-with-deep-">End-to-End Driving in a Realistic Racing Game with Deep …</h3>
+<p>A workshop paper. Traditional autonomous driving is perception, planning and control, but recently map sensor input directly to low level control. This work uses A3C for learning to control. Also see [End-to-end training of deep visuomotor policies]. A3C is good because it does not need any experience replay. Reward is not defined by the in-game score since it’s too sparse. The reward is defined by the distance to the middle of the road. [LW: seems in practical RL problem, we can define the reward arbitrarily to reflect our prior knowledge].</p>
+
+<h3 id="automated-risk-assessment-for-scene-understanding-and-domestic-robots-using-rgb-d-data-and-25d-cnns-at-a-patch-level">Automated risk assessment for scene understanding and domestic robots using RGB-D data and 2.5D CNNs at a patch level</h3>
+
+<p>This work seems nothing new but the application is related to XOM business. May need task-specific training dataset.</p>
+
+<h3 id="the-one-hundred-layers-tiramisu-fully-convolutional-densenets-for-semantic-segmentation">The One Hundred Layers Tiramisu/ Fully Convolutional DenseNets for Semantic Segmentation</h3>
+
+<p>Extend Dense Network to up-convolution. Works well on some datasets without preprocessing and post-processing.  [Need to implement this in TF]</p>
+
+<h3 id="borrowing-treasures-from-the-wealthy-deep-transfer-learning-through-selective-joint-fine-tuning">Borrowing Treasures From the Wealthy: Deep Transfer Learning Through Selective Joint Fine-Tuning</h3>
+
+<p>Oral paper. Source and target task are learned at same time. Use subset of training data of source task, and fine tune the shared layer of both tasks.</p>
+
+<h3 id="the-more-you-know-using-knowledge-graphs-for-image-classification">The More You Know: Using Knowledge Graphs for Image Classification</h3>
+
+<p>Graph search neural net, use features from the image to annotate the graph, select subset of graph and predict the output on nodes representing visual concepts.</p>
+
+<h3 id="a-contextual-constructive-approach">A contextual constructive approach</h3>
+
+<p>use graph neural nets to QSPR in chemistry, but could not find pdf online. Not a CVPR paper.</p>
+
+<h3 id="dynamic-edge-conditioned-filters-in-convolutional-neural-networks-on-graphs">Dynamic Edge-Conditioned Filters in Convolutional Neural Networks on Graphs</h3>
+
+<p>Define convolution on graph structure and take into account the label defined on nodes. [think about connections to CRF or annistropic diffusion ]. Applied to point cloud data, but also useful for other graph structure like chemical, etc. 3D modeling, computational chemistry and biology, geospatial analysis, social networks, or natural language semantics and knowledge bases,</p>
+
+<h3 id="unsupervised-pixellevel-domain-adaptation-with-generative-adversarial-networks">Unsupervised Pixel–Level Domain Adaptation with Generative Adversarial Networks</h3>
+
+<p>Use GAN to generative real images given synthetic images, similar to the GAN paper from Apple, best paper of CVPR 17.</p>
+
+<p>The paper seems well written, at least the oral talk slides are good. [Need to read paper to know more basics of DA]</p>
+
+<p>Feed-forward based model that can generated multiple textures from single network. Represent style with a one-hot vector but continuous. Input is from noise and also from style vectdor. Has a diversity loss</p>
+
+<h3 id="deep-reinforcement-learning-based-image-captioning-with-embedding-reward-">Deep Reinforcement Learning-based Image Captioning with Embedding Reward ***</h3>
+
+<p>Define a policy network to predict the next word, and a value network to evaluate all possible extensions. Existing methods use encoder-decoder: use convnet to encode images, and then use recurrent net to decode it into sentences. recurrent net is greedy, so propose RL for global optimal prediction. Actic-critic net, and use visual-semantic embedding to define the reward.</p>
+
+<h3 id="agent-centric-risk-assessment-accident-anticipation-and-risky-region-localization">Agent-Centric Risk Assessment: Accident Anticipation and Risky Region Localization</h3>
+
+<p>Didn’t read it but seems related with XOM safety.</p>
+
+<h3 id="action-decision-networks-for-visual-tracking-with-deep-reinforcement-learning">Action-Decision Networks for Visual Tracking with Deep Reinforcement Learning</h3>
+
+<p>light computation, deep net is pre-trained, and then online adapted. Pretraining is by RL,</p>
+
+<h3 id="making-deep-neural-networks-robust-to-label-noise-a-loss-correction-approach">Making Deep Neural Networks Robust to Label Noise: A Loss Correction Approach</h3>
+
+<h3 id="network-dissection-quantifying-interpretability-of-deep-visual-representations">Network Dissection: Quantifying Interpretability of Deep Visual Representations</h3>
+
+<h3 id="mdnet-a-semantically-and-visually-interpretable-medical-image-diagnosis-network">MDNet: A Semantically and Visually Interpretable Medical Image Diagnosis Network</h3>
+
+<h3 id="geometric-deep-learning-on-graphs-and-manifolds-using-mixture-model-cnns">Geometric Deep Learning on Graphs and Manifolds Using Mixture Model CNNs</h3>
+
+<h3 id="feature-pyramid-networks-for-object-detection">Feature Pyramid Networks for Object Detection</h3>
+
+<h3 id="deep-variation-structured-reinforcement-learning-for-visual-relationship-and-attribute-detection">Deep Variation-Structured Reinforcement Learning for Visual Relationship and Attribute Detection</h3>
+
+<h3 id="learning-random-walk-label-propagation-for-weakly-supervised-semantic-segmentation">Learning random-walk label propagation for weakly-supervised semantic segmentation</h3>
+
+<h3 id="deep-watershed-transform-for-instance-segmentation">Deep Watershed Transform for Instance Segmentation</h3>
+
+<h3 id="mining-object-parts-from-cnns-via-active-question-answering">Mining Object Parts from CNNs via Active Question-Answering</h3>
+
+<p>Zhu Song-Chun’s lab.</p>
+
+<h3 id="poseagent-budget-constrained-6d-object-pose-estimation-via-reinforcement-learning">PoseAgent: Budget-Constrained 6D Object Pose Estimation via Reinforcement Learning</h3>
+
+<p>Use policy network for RL.</p>
+
+<h3 id="stylebank-an-explicit-representation-for-neural-image-style-transfer">StyleBank: An Explicit Representation for Neural Image Style Transfer</h3>
+
+<p>Microsoft Asia Pix paper.</p>
+
+<h3 id="joint-sequence-learning-and-cross-modality-convolution-for-3d-biomedical-segmentation">Joint Sequence Learning and Cross-Modality Convolution for 3D Biomedical Segmentation</h3>
+<p>GE GRC paper.</p>
+
+<h3 id="full-resolution-residual-networks-for-semantic-segmentation-in-street-scenes">Full-Resolution Residual Networks for Semantic Segmentation in Street Scenes</h3>
+<p>two networks for segmentation, without pre-training and post-processing.</p>
+
+<h3 id="deep-variation-structured-reinforcement-learning-for-visual-relationship-and-attribute-detection-1">Deep Variation-structured Reinforcement Learning for Visual Relationship and Attribute Detection</h3>
+<p>Use RL to detect something.</p>
+
+<h3 id="detecting-visual-relationships-with-deep-relational-networks">Detecting Visual Relationships with Deep Relational Networks</h3>
+<p>Another relationship detection work, oral talk.</p>
+
+<h3 id="a-reinforcement-learning-approach-to-the-view-planning-problem">A Reinforcement Learning Approach to the View Planning Problem</h3>
+<p>GE paper.</p>
+
+<h3 id="refinenet-multi-path-refinement-networks-for-high-resolution-semantic-segmentation">RefineNet: Multi-Path Refinement Networks for High-Resolution Semantic Segmentation</h3>
+
+<h3 id="low-rank-bilinear-pooling-for-fine-grained-classification">Low-rank Bilinear Pooling for Fine-Grained Classification</h3>
+<p>seems loosely connected to textures</p>
+
+<h3 id="knowledge-acquisition-for-visual-question-answering-via-iterative-querying">Knowledge Acquisition for Visual Question Answering via Iterative Querying</h3>
+
+<p>Zhu Yuke and Fei-Fei’s work.</p>
+
+<h3 id="cognitive-mapping-and-planning-for-visual-navigation">Cognitive Mapping and Planning for Visual Navigation</h3>
+<p>Malik’s paper. Also saw it on his workshop talk.</p>
+
+<h3 id="deep-feature-interpolation-for-image-content-changes">Deep Feature Interpolation for Image Content Changes</h3>
+
+<h3 id="collaborative-deep-reinforcement-learning-for-joint-object-search">Collaborative Deep Reinforcement Learning for Joint Object Search</h3>
+
+<h3 id="image-to-image-translation-with-conditional-adversarial-networks">Image-to-Image Translation with Conditional Adversarial Networks</h3>
+
+<h3 id="g2denet-global-gaussian-distribution-embedding-network-and-its-application-to-visual-recognition">G2DeNet: Global Gaussian Distribution Embedding Network and Its Application to Visual Recognition</h3>
+
+<p>some structure layers is trainable and can be inserted in to DNN. This paper proposes a Gaussian embedding layer, which model the probabilistic Distribution of the filter output. This paper may have some references about other global trainable layers. Decompose the covariance matrix into sub-matrices.</p>
+
+<script type="math/tex; mode=display">x^2 + y^2</script>
+
+
+      </section>
+      <footer>
+        
+        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+
+
+  
+  </body>
+</html>

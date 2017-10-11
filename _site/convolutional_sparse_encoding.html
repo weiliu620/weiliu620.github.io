@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Convolutional autoencoder, sparse coding, etc. | Dawei’s random notes on machine learning and computer vision</title>
+<meta property="og:title" content="Convolutional autoencoder, sparse coding, etc." />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Some notes of reading papers and attending conferences." />
+<meta property="og:description" content="Some notes of reading papers and attending conferences." />
+<link rel="canonical" href="http://localhost:4000/convolutional_sparse_encoding.html" />
+<meta property="og:url" content="http://localhost:4000/convolutional_sparse_encoding.html" />
+<meta property="og:site_name" content="Dawei’s random notes on machine learning and computer vision" />
+<script type="application/ld+json">
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/convolutional_sparse_encoding.html","publisher":null,"image":null,"headline":"Convolutional autoencoder, sparse coding, etc.","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e936c88afd85f505dc8ecee029c7f4cd5b96f73a">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Dawei's random notes on machine learning and computer vision</h1>
+        <p>Some notes of reading papers and attending conferences. </p>
+
+        
+          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <h3 id="what-is-the-best-multi-stage-architecture-for-object-recognition">What is the best multi-stage architecture for object recognition</h3>
+<p>Not a convolutional sparse coding, but an earlier work of the same lab. Used patch based model for multi-stage learning (unsupervised?)</p>
+
+<p>Eq. 1 in the paper may help me understand the difference between 2D and 3D convolution.</p>
+
+<p>I vaguely remember this paper also mentioned that some methods use advanced classifiers after feature learning/extraction. This might be a starting point to learn these advanced methods (such as spatial pyramid matching). Haven’t paid much attention to this area yet.</p>
+
+<h3 id="convolutional-matching-pursuit-and-dictionary-training">Convolutional matching pursuit and dictionary training</h3>
+
+<h3 id="deconvolutional-networks-2010">Deconvolutional Networks (2010)</h3>
+<p>Zailer’s convolutional sparse coding seems the first one to use it, even before “Learning convolutional feature hierarchies…”.</p>
+
+<h3 id="learning-convolutional-feature-hierarchies-for-visual-recognition-2010">Learning convolutional feature hierarchies for visual recognition (2010)</h3>
+<p>The author also made the point that conventional sparse coding need a optimization during test, even a dictionary is already learned during training. The proposed methods also use a encoding step to approximate the codes (just like early work of Ranzato’s autoencoder)</p>
+
+<p>It seems the methods proposed here need a lot of optimization work. the author claims that the filter learned in convolutional sparse coding is more diverse, with less redundancy. But what is the real benefits of it even it sounds very good? Is it worth more work during learning? I wish there is a Theano or Tensorflow package for this algorithm.</p>
+
+<p>Digress: Early deep network is trained layer by layer, but recent autoencoder seems not. Do we still need train each layer after previous layer is trained?</p>
+
+<h3 id="convolutional-matching-pursuit-and-dictionary-training-1">Convolutional matching pursuit and dictionary training</h3>
+<p>Also Zeiler’s paper.</p>
+
+<h3 id="fast-convolutional-sparse-coding-2013">Fast Convolutional Sparse Coding (2013)</h3>
+
+<h3 id="deep-learning-with-hierarchical-convolutional-factor-analysis-ieee-pami-2013">Deep learning with hierarchical convolutional factor analysis (IEEE PAMI 2013)</h3>
+
+<h3 id="imaging-in-scattering-media-using-correlation-image-sensors-and-sparse-convolutional-coding2014">Imaging in scattering media using correlation image sensors and sparse convolutional coding(2014)</h3>
+
+<h3 id="fast-and-flexible-convolutional-sparse-coding-2015">Fast and Flexible Convolutional Sparse Coding (2015)</h3>
+<p>Previous Bristow’s method do the convolution in frequency domain, but this paper proposed new optimization method that improve both the spatial and frequency domain learning.</p>
+
+<p>The experiments show that when the input image is big (say, 1000x1000), this method is much faster than patch-based methods.</p>
+
+<p>Local contrast normalization? What is that.</p>
+
+<p>A unrelated question: how to stack multiple SC to get a deep network. Choose filter size? What is the feature map size? Max-pooling or not? May need to go back to LeCun’s early paper. (what is the best model structure for deep network…)</p>
+
+<h3 id="imaging-in-scattering-media-using-correlation-image-sensors-and-sparse-convolutional-coding">Imaging in scattering media using correlation image sensors and sparse convolutional coding.</h3>
+<p>Same author of previous paper. Use sparse coding on data with noisy and missing measurements, when filters are know as a priori (for example, motivated by physical models, such as sonar, seismic imaging, radar or ultrasound). However, the toy example shown in the paper is not very convincing.</p>
+
+<h3 id="from-sparse-solutions-of-systems-of-equations-to-sparse-modeling-of-signals-and-images">From sparse solutions of systems of equations to sparse modeling of signals and images</h3>
+<p>A patch based method.</p>
+
+<h3 id="online-dictionary-learning-for-sparse-coding">Online dictionary learning for sparse coding</h3>
+<p>A patch based method</p>
+
+<h3 id="from-learning-models-of-natural">From learning models of natural</h3>
+<p>image patches to whole image restoration
+Patched based.</p>
+
+<h3 id="shift-invariance-sparse-coding-for-audio-classification-uai-2007">Shift-invariance sparse coding for audio classification (UAI 2007)</h3>
+<p>First to propose solve sparse coding in frequency domain.</p>
+
+<h3 id="fast-convolutional-sparsecoding-fcsc">Fast Convolutional SparseCoding (FCSC)</h3>
+<p>Technical report in 2014. Sove SC in frequency domain for 2D image. but may have boundary artifacts.</p>
+
+<h3 id="stacked-what-where-auto-encoders-2015">Stacked what-where auto-encoders (2015)</h3>
+
+<h3 id="brendt-wohlberg-efficient-convolutional-sparse-coding">Brendt Wohlberg, “Efficient Convolutional Sparse Coding”</h3>
+<p>Has a matlab code repository on GitHub. Also cited Bristow.</p>
+
+<h3 id="classification-of-histology-sections-via-multispectral-convolutional-sparse-coding-2014-cvpr">Classification of Histology Sections via Multispectral Convolutional Sparse Coding (2014, CVPR)</h3>
+<p>Cited Bristow’s work. CVPR paper. (remind me the EDS multiple channel dataset…can be useful for this purpose, or multi-modality seismic data)</p>
+
+<p>Learned features are sent into a spatial pyramid matching for classification. It may work better than vanilla classifier.</p>
+
+<p>The paper looks like an good application of CS in biological imaging.</p>
+
+<h3 id="beyond-bags-of-features-spatial-pyramid-matching-for-recognizing-natural-scene-categories">Beyond bags of features: Spatial pyramid matching for recognizing natural scene categories.</h3>
+<p>Spatial pyramid matching.</p>
+
+<h3 id="character--ization-of-tissue-histopathology-via-predictive-sparse-decom--position-and-spatial-pyramid-matching-2013">Character- ization of tissue histopathology via predictive sparse decom- position and spatial pyramid matching (2013)</h3>
+
+<h3 id="pedestrian-detection-with-unsupervised-multi-stage-feature-learning">Pedestrian detection with unsupervised multi-stage feature learning</h3>
+<p>LeCunn’s group. use sparse coding.</p>
+
+<h3 id="accurate-and-efficient-linear-structure-segmentation-by-leveraging-ad-hoc-features-with-learned-filters">Accurate and efficient linear structure segmentation by leveraging ad hoc features with learned filters</h3>
+<p>On retinal segmentation.</p>
+
+<hr />
+
+
+      </section>
+      <footer>
+        
+        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+
+
+  
+  </body>
+</html>

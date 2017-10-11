@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>texture analysis | Dawei’s random notes on machine learning and computer vision</title>
+<meta property="og:title" content="texture analysis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Some notes of reading papers and attending conferences." />
+<meta property="og:description" content="Some notes of reading papers and attending conferences." />
+<link rel="canonical" href="http://localhost:4000/texture.html" />
+<meta property="og:url" content="http://localhost:4000/texture.html" />
+<meta property="og:site_name" content="Dawei’s random notes on machine learning and computer vision" />
+<script type="application/ld+json">
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/texture.html","publisher":null,"image":null,"headline":"texture analysis","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e936c88afd85f505dc8ecee029c7f4cd5b96f73a">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Dawei's random notes on machine learning and computer vision</h1>
+        <p>Some notes of reading papers and attending conferences. </p>
+
+        
+          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <h3 id="texture-synthesis-using-convolutional-neural-networks">Texture Synthesis Using Convolutional Neural Networks</h3>
+<p>Use pretrained VGG network as a feature embedding method. Given target image, extract features, and compute Gram matrix <script type="math/tex">G</script> for each layer <script type="math/tex">l</script>. The entry <script type="math/tex">G_{ij}</script> is the inner product of the vectorized feature map <script type="math/tex">F_i</script> and <script type="math/tex">F_j</script>. The Gram matrix does not have spatial information, because texture, by definition, is spatial invariant, and the measurement does not need spatial information.</p>
+
+<p>The experiments show that the model can generate better image if using the feature map up to pool4 layer of the VGG network.</p>
+
+<p>The algorithm may fail when the target texture image is man made, for example, brick walls.</p>
+
+<p>The Gram matrix, as a new set of features, can also be used for object recognition, a supervised learning task. When using the higher layer of Gram matrix, we can achieve good classification of the objects in the image. This is a bit of surprising, since Gram matrix as a texture feature, does not have any spatial information. But such good classification performance is also consistent with the fact that convnet is also spatial agnostic. (LW: this is probably the reason that some garbage input image can fool convnet even it does not have spatial information, because convnet does not care spatial information)</p>
+
+<p>Interestingly, the authors claim that both “Spatial pyramid pooling in deep convolutional networks for visual recognition” and “Deep convolutional filter banks for texture recognition and segmentation” use similar concept: compute a pooled statistics/features in a stationary feature space.</p>
+
+<h3 id="a-parametric-texture-model-based-on-joint-statistics-of-complex-wavelet-coefficients">A parametric texture model based on joint statistics of complex wavelet coefficients</h3>
+
+<p>An early paper that propose a function <script type="math/tex">\phi(x)</script> to transform a image to some features, such that image with same textures have similar <script type="math/tex">\phi(x)</script> at feature space. This is the original paper that the above texture synthesis work is based on, particular the Gram matrix. Other than the Gram matrix, this paper also propose some other measures, but may not be applicable in the CNN settings, hence not used in the CNN texture synthesis.</p>
+
+<p>That remind me a question that what convolutional net learns. Does it just learn the texture information, which is often sufficient for classification task? I suspect it mainly learns spatial agnostic local statistics, because the full convolutional layer.</p>
+
+<p>Besides the cross-correlation between the feature maps within a layer/scale, this paper also proposes to use cross-correlation between feature maps across layers. Since different scales have different feature map size, finer scale’s feature map need to be down-sampled before cross-correlation. however, such texture representation is not used in [gat15].</p>
+
+<h3 id="deep-filter-banks-for-texture-recognition-and-segmentation">Deep Filter Banks for Texture Recognition and Segmentation</h3>
+<p>Use two CNN for texture classification and recognition. One use the second to last layer of pretrained CNN, so the fully connected layer has spatial information of the object. The other one use the last convolutional layer without the fully connected layer, so it does not have spatial information, and better represent texture information. In practice, the second feature embedding method extract features from multiple scale/layers, just like SIFT.</p>
+
+<p>First generate regions, then do texture classification within regions. Both CNN models are used in the texture classification stage, not in the fist region generation stage. This is because stage one only have a coarse region proposal.</p>
+
+<h3 id="describing-textures-in-the-wild">Describing textures in the wild</h3>
+<p>This paper is similar to “Deep Filter Bank…” but uses SIFT + Fisher vector, instead of using CNN + FV.</p>
+
+<h3 id="bilinear-cnn-models-for-fine-grained-visual-recognition">Bilinear CNN Models for Fine-grained Visual Recognition</h3>
+<p>Same author has some works on texture representation. And the bilinear CNN is similar to the cross-correlation methods for texture synthesis.</p>
+
+<h3 id="separate-visual-pathways-for-perception-and-action">Separate visual pathways for perception and action</h3>
+<p>Referenced by the above bilinear CNN. Visual pathway has two path: one for ‘where’ and another for ‘what’. This is yet another paper to show the connection to biological vision.</p>
+
+<h3 id="separating-style-and-content-with-bilinear-models">Separating style and content with bilinear models</h3>
+<p>Seem like an early work of bilinear models.  also referenced by bilinear CNN paper.</p>
+
+<h3 id="visualizing-and-understanding-deep-texture-representations">Visualizing and Understanding Deep Texture Representations</h3>
+<p>The same authors of bilinear CNN use the model to inverse network and generate images.</p>
+
+<h3 id="semantic-style-transfer-and-turning-two-bit-doodles-into-fine-artworks">Semantic Style Transfer and Turning Two-Bit Doodles into Fine Artworks</h3>
+
+<h3 id="combining-markov-random-fields-and-convolutional-neural-networks-for-image-synthesis">Combining Markov Random Fields and Convolutional Neural Networks for Image Synthesis</h3>
+
+<p>Looks like the original paper used by Neural-Doodle.</p>
+
+<h3 id="texture-networks-feed-forward-synthesis-of-textures-and-stylized-images">Texture Networks: Feed-forward Synthesis of Textures and Stylized Images</h3>
+<p>Latest from Twitter.</p>
+
+<h3 id="texture-modeling-with-convolutional-spike-and-slab-rbms-and-deep-extensions">Texture Modeling with Convolutional Spike-and-Slab RBMs and Deep Extensions</h3>
+<p>A paper I found earlier this year, from bengio’s group.</p>
+
+<h3 id="httpsgithubcomalexjcneural-doodle">https://github.com/alexjc/neural-doodle</h3>
+
+<h3 id="httpsnuclaiblogextreme-style-machines">https://nucl.ai/blog/extreme-style-machines/</h3>
+
+<h3 id="neural-autoregressive-distribution-estimation">Neural Autoregressive Distribution Estimation</h3>
+
+<h3 id="improving-the-neural-algorithm-of-artistic-style-2016-latest">Improving the Neural Algorithm of Artistic Style （2016 latest）</h3>
+
+<h3 id="image-decomposition-separation-of-texture-from-piecewise-smooth-content">Image Decomposition: Separation of Texture from Piecewise Smooth Content</h3>
+<p>Google and found it for texture and content separation. Donoho’s paper. Note the citation and need to dig into those cited it.</p>
+
+
+      </section>
+      <footer>
+        
+        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+
+
+  
+  </body>
+</html>

@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>medical imaging | Dawei’s random notes on machine learning and computer vision</title>
+<meta property="og:title" content="medical imaging" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Some notes of reading papers and attending conferences." />
+<meta property="og:description" content="Some notes of reading papers and attending conferences." />
+<link rel="canonical" href="http://localhost:4000/medical_imaging.html" />
+<meta property="og:url" content="http://localhost:4000/medical_imaging.html" />
+<meta property="og:site_name" content="Dawei’s random notes on machine learning and computer vision" />
+<script type="application/ld+json">
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/medical_imaging.html","publisher":null,"image":null,"headline":"medical imaging","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e936c88afd85f505dc8ecee029c7f4cd5b96f73a">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Dawei's random notes on machine learning and computer vision</h1>
+        <p>Some notes of reading papers and attending conferences. </p>
+
+        
+          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <h3 id="large-scale-automatic-reconstruction-of-neuronal-processes-from-electron-microscopy-images">Large-Scale Automatic Reconstruction of Neuronal Processes from Electron Microscopy Images</h3>
+
+<h3 id="flexible-high-performance-convolutional-neural-networks-for-image-classification-ijcai-2011">Flexible, high performance convolutional neural networks for image classification (IJCAI, 2011)</h3>
+
+<h3 id="deep-neural-networks-segment-neuronal-membranes-in-electron-microscopy-images">Deep neural networks segment neuronal membranes in electron microscopy images</h3>
+<p>An early 2012 work on cell membrane segmentation. Used patched based feature embedding methods and standard convnet. Winner of 2012 ISBI challenge.</p>
+
+<ul>
+  <li>
+    <p>The positive samples are selected as the square image centered at pixels labeled as membrane. Negative samples are selected at rest of the pixel labeled as non-membrane, with same number of positive samples. Because of the rotation invariance, data is augmented at beginning of each epoch by rotating 90 degree and mirroring.</p>
+  </li>
+  <li>
+    <p>Training data has equal number of positive and negative samples, so the output scores are biased. Trained another polynomial transformation to correct such bias.</p>
+  </li>
+  <li>
+    <p>For such supervised learning, it seems there is no difference between so called patch-based or image based. During training, a whole image enter the convnet, and cost function is defined based on the segmentation labels.</p>
+  </li>
+  <li>For unsupervised learning such as autoencoder, there might be some difference. Need revisit this difference since I forgot it.</li>
+  <li>Also manipulated input data window by blurring peripheral pixels and fisheye’ing the image.</li>
+  <li>Also used model ensembles: multiple CNNs.</li>
+</ul>
+
+<h3 id="mitosis-detection-in-breast-cancer-histology-images-with-deep-neural-networks">Mitosis Detection in Breast Cancer Histology Images with Deep Neural Networks</h3>
+<p>Also patch based methods and use max-pooling. I think patch based methods make sense for these microscopy images, because there is not much hierarchical information. Most of the interesting patterns are at roughly same scale. That is, looking only at at patch does not lose any information for the recognition of objects within the patch.</p>
+
+<h3 id="multi-column-deep-neural-networks-for-image-classification-2012">Multi-column deep neural networks for image classification (2012)</h3>
+<p>An early work that are well cited. Use multiple DNN as a ensemble method.</p>
+
+<h3 id="deep-neural-networks-for-object-detection-2013">Deep Neural Networks for Object Detection (2013)</h3>
+<p>This is detection, not segmentation. and not really medical imaging domain.</p>
+
+<h3 id="fast-image-scanning-with-deep-max-pooling-convolutional-neural-networks">Fast Image Scanning with Deep Max-Pooling Convolutional Neural Networks</h3>
+<p>A technical report of 2013 for segmentation, also on microscopy images. This paper seems to compare patch-based and image-based CNN. May worth reading.</p>
+
+<p>Instead of computing convolution between each patch and filter, we can compute the convolution between whole input image and a filter. However, max-pooling make it tricky. This paper deal with convolution layer and max-pooling layer, and still do a image-based convolution, instead of a patch-based. Could not figure out how the “fragment” trick works…</p>
+
+<h3 id="segem-efficient-image-analysis-for-high-resolution-connectomics">SegEM: Efficient Image Analysis for High-Resolution Connectomics</h3>
+<p>Not a deep learning paper per se, but an image analysis paper on Neuron.</p>
+
+<h3 id="automatic-detection-of-cerebral-microbleeds-from-mr-images-via-3d-convolutional-neural-networks">Automatic Detection of Cerebral Microbleeds from MR Images via 3D Convolutional Neural Networks.</h3>
+<p>Found this one searching vonvnets on 3D volume imaging.</p>
+
+<h3 id="a-fast-and-scalable-algorithm-for-training-3d-convolutional-networks-on-multi-core-and-many-core-shared-memory-machines">A fast and scalable algorithm for training 3D convolutional networks on multi-core and many-core shared memory machines</h3>
+<p>Seems more on computational speed up, but also like application on 3D volume image. From the group for neuron membrane study (image segmentation?)</p>
+
+<p>First pass of the paper: ZNN works better on networks with larger kernel/filter size. For 3D convolution, ZNN starts to work faster when kernel is 7x7x7.</p>
+
+<h2 id="deep-learning-convolutional-networks-for-multiphoton-microscopy-vasculature-segmentation">Deep Learning Convolutional Networks for Multiphoton Microscopy Vasculature Segmentation</h2>
+<p>Found this paper since it cited the above ZNN paper. It’s about vessel segmentation in 3D. A dataset of 12 volume is available for public. (has some reproducible research references that are quite interesting). Author finland.</p>
+
+<h3 id="recursive-training-of-2d-3d-convolutional-networks-for-neuronal-boundary-detection">Recursive Training of 2D-3D Convolutional Networks for Neuronal Boundary Detection</h3>
+<p>An application of the ZNN paper above to the 3D volume imaging, for neuron reconstruction problem in Seung’s group. Their network seems to include 2D convolution filters at beginning, then 3D filter at later stage. Probably it is because of the anisotropic resolution of EM image.</p>
+
+<p>The authors also mentioned the 3D convnet applications on block face EM data (isotropic). Need to check out these work.</p>
+
+<p>The paper also cited two works of using 3D filters on video processing. That reminds me that video analysis are also applications of 3D convnet.</p>
+
+<p>The paper also use a max-filtering instead of max-pooling. The output of max-filtering has same size with input map. Not sure why it is preferred. Probably for a pixel-wise training.</p>
+
+<p>The recursive method proposed in this work is inspired by a Neuron paper on how Monkeys recognize contours. May need to check out the original work.</p>
+
+<h3 id="convolutional-networks-can-learn-to-generate-affinity-graphs-for-image-segmentation-2010">Convolutional networks can learn to generate affinity graphs for image segmentation (2010)</h3>
+<p>An early paper cited by above paper, about convnet on 3D image segmentation. It is from the Seung’s group for neuron segmentation. Use CNN to extract features, and use these features to define the affinity graph. Edge weights is 1 for two points similar, and 0 otherwise.</p>
+
+<p>the CNN model’s output is the weight of edges on the graph of 3D grid. Such model makes sense for this task because there is a natural boundary between the objects of interests.</p>
+
+<p>Once the edge weights ( 1 or 0) is learned, partitioning is done by N-Cuts.</p>
+
+<h3 id="supervised-learning-of-image-restoration-with-convolutional-networks">Supervised Learning of Image Restoration with Convolutional Networks</h3>
+<p>For image restoration with CNN, also compare with MRF and claim they are related, but CNN works better in practice.</p>
+
+<h3 id="crowdsourcing-the-creation-of-image-segmentation-algorithms-for-connectomics">Crowdsourcing the creation of image segmentation algorithms for connectomics</h3>
+
+<h3 id="robust-cell-detection-and-segmentation-in-histopathological-images-using-sparse-reconstruction-and-stacked-denoising-autoencoders"><a href="http://research.rutgers.edu/~shaoting/paper/MICCAI15_autoencoder.pdf">Robust Cell Detection and Segmentation in Histopathological Images using Sparse Reconstruction and Stacked Denoising Autoencoders</a></h3>
+<p>MICCAI paper. Also check out Zhang, Shaoting’s other publications, especially on the hashing work.</p>
+
+<p>First pass: looks like many steps in the processing pipeline, and I’m not sure whether autoencoder play a big role here. It is a 2D object detection and recognition problem. Not 3D.</p>
+
+<h3 id="deep-convolutional-encoder-networks-for-multiple-sclerosis-lesion-segmentation"><a href="https://www.cs.ubc.ca/~rtam/Brosch_MICCAI_2015.pdf">Deep convolutional encoder networks for multiple sclerosis lesion segmentation</a></h3>
+<p>A MICCAI paper. Convolutional net on entire volume image instead on patches. The deconv layer is similar to Zeiler’s work. The model is also similar to the convolutional autoencoder by Masci et al. However, the model in this paper is not deep, just 3 layers. on the implementation side, no mention about how to deal with 3D volume image as input. Standard convnet only take 2D image plus RGB channels.</p>
+
+<p>One thing not clear to me: the encoding uses “valid convolution”, but the decoding uses “full convolution”.</p>
+
+<h3 id="deep-learning-of-image-features-from-unlabeled-data-for-multiple-sclerosis-lesion-segmentation">[Deep learning of image features from unlabeled data for multiple sclerosis lesion segmentation]</h3>
+<p>From the same Tam’s group. Patched based learning. Check the lab’s publications <a href="https://www.cs.ubc.ca/~rtam/publications.html">here</a></p>
+
+<p>A MICCAI workshop paper. First unsupervised then supervised training. Unsupervised learning is on a stacked RBM, then the trained RBM is used to extract feature for labeled data and send the feature to a voxel-wise random forest for training.</p>
+
+<p>For RBM, patches with two different scales are extracted centered at a voxel. RBM has two hidden layer of binary values. The features extracted from two scales are concatenated, also the features from T2 and PD modalities are concatenated. Extracted some patches with true target (lesion), and also extracted some patches without target pattern.</p>
+
+<h3 id="deep-3d-convolutional-encoder-networks-with-shortcuts-for-multiscale-feature-integration-applied-to-multiple-sclerosis-lesion-segmentation">Deep 3D convolutional encoder networks with shortcuts for multiscale feature integration applied to multiple sclerosis lesion segmentation</h3>
+<p>From the same group of previous MICCAI paper. This is a TMI paper. Could not find a online copy now. From the abstract: use convolution and deconvolution for segmentation. Seems have a unsupervised step then a supervised step. Also use shortcuts (between conv and deconv layer?) for what reason?</p>
+
+<h3 id="deep-learning-of-brain-images-and-its-application-to-multiple-sclerosis">Deep learning of brain images and its application to multiple sclerosis</h3>
+<p>Also from the same group. Well this is a MLMI workshop proceedings so may not worth reading.</p>
+
+<h3 id="spatially-sparse-convolutional-neural-networks"><a href="http://arxiv.org/pdf/1409.6070v1.pdf">Spatially-sparse convolutional neural networks</a></h3>
+<p>Not a medical imaging application, but a trick of convnet for sparse 3D spatial data. For example, a pen stroke in 3D space is sparse. Saw this paper on a reddit discussion for 3D convnet.</p>
+
+<h3 id="deeporgan-multi-level-deep-convolutional-networks-for-automated-pancreas-segmentation">DeepOrgan: Multi-level Deep Convolutional Networks for Automated Pancreas Segmentation</h3>
+<p>Multi-atlas and label fusion is top-down, and this paper claim to be bottom-up. Run a super-voxel before convnet, but why?</p>
+
+<p>Also use R-CNN to generate region proposal, at different scales.</p>
+
+<p>Not very clear why so many processing steps are needed. Probably the region proposal will save computation in 3D space. Also, the superpixel and region generations is fairly new so might be helpful for related work.</p>
+
+<p>Extract patches at axial, coronal, and sagittal slice, around each supervoxels.</p>
+
+<p>It seems that a initial convnet generate some segmentation, which is used for a second convnet. Such methods looks familiar.</p>
+
+<p>Also use nonrigid deformation to augment patch data. Deformation use thin plate spline.</p>
+
+<p>At last the probability score from all scales are combined. Overall, it seems there are too many steps and I’m not sure such pipeline is generalizable.</p>
+
+<h3 id="3d-deep-learning-for-efficient-and-robust-landmark-detection-in-volumetric-data">3D Deep Learning for Efficient and Robust Landmark Detection in Volumetric Data</h3>
+<p>Have read this before. Second read: Problem of 3D volume: more input pixels, and need more training data. Two steps: First step use a shallow network to find candidates, and second step use deep network for classification. The second network looks like unsupervised learning by using stack autoencoder, and the features learned all all layers are sent into other classifiers.</p>
+
+<p>For first network, use separable 3D filter, so 3D convolution is approximated by three 1D convolution. The original 3D filter <script type="math/tex">W</script> can be approximated by <script type="math/tex">W = \sum_s W_x^s \cdot W_y^s \cdot W_z^s</script>. Such sum over multiple terms can have better approximation than a single multiplication. Furthermore, because many filter <script type="math/tex">W</script>’s in a single layer tends to be strong correlated, we can use same set of 1D filter to reconstruct all 3D filters <script type="math/tex">W</script> in a layer. So, we need  a 4D tensor decomposition.</p>
+
+<p>In order to use smaller number of separable filters, they apply constraints on the original 3D filter to have small variance, in order to make them smooth. That remind me the topological smooth filters learned from LeCunn’s group, which seems make more sense than simply regularizing the variance of filters.</p>
+
+<p>The second network use MLP and has 3 hidden layers and 2000 nodes each layer. The authors claim that separable filters do not work well in the second network because target objects are scattered around. Why is that? Is that because the filters within layers are less correlated so we cannot approximate the filters only using a small number of 1D filters?</p>
+
+<p>The author observes that many filters’ weights are small, so they enforce that by applying a sparsity regularization. And, it is not clear to me that the second network is a autoencoder which means it’s unsupservised. So, the features learned in the second networks are used for other classifiers.</p>
+
+<p>The patch size: too small we don’t have enough field of view to do correct classification, too large will add computational cost. The authors build image pyramid. It seems they downsampled the image and extract same size patches, that amounts to the large FOV in original scale. But, I’m thinking, isn’t it the same thing with multi-layer convolution network? (which the author didn’t use, or at least didn’t get better results from). The features from multi scales are concatenated into the classifier.</p>
+
+<p>The classifiers: probabilistic boosting tree. That may answer my questions: how to deal with the feature extracted from multi-scale? Just let the classifier do the job.</p>
+
+<p>The experiments seem to show that using both predefined features such as Haar wavelet, and the learned features from deep network achieves much better results. That is a reminder that engineered features can still have complementary information to the learned features.</p>
+
+<p>Overall, I think the two step approach makes sense on detections problems where we have sparse positive samples in a large image area (which is what we’re dealing with)</p>
+
+<p>The separable filters are much more efficient than 3D filter only when the filter size is large. However, nowadays filter size tends to be small. Is it still worthy to approximate 3D filter by separable 1D filters?</p>
+
+<h3 id="deep-feature-learning-for-knee-cartilage-segmentation-using-a-triplanar-convolutional-neural-network-miccai-2013">Deep feature learning for knee cartilage segmentation using a triplanar convolutional neural network (MICCAI 2013)</h3>
+<p>Use orthogonal patches as a surrogate to 3D patch and train the model.</p>
+
+<h3 id="a-new-25d-representation-for-lymph-node-detection-using-random-sets-of-deep-convolutional-neural-network-observations-miccai-2014">A new 2.5D representation for lymph node detection using random sets of deep convolutional neural network observations (MICCAI 2014)</h3>
+<p>Extract 2D patches with random orientation.</p>
+
+<h3 id="a-hybrid-of-deep-network-and-hidden-markov-model-for-mci-identification-with-resting-state-fmri">A Hybrid of Deep Network and Hidden Markov Model for MCI Identification with Resting-State fMRI</h3>
+<p>Paper not available online. Use autoeoncer and HMM for classificaiton, and claim to model dynamics.</p>
+
+<h3 id="automatic-coronary-calcium-scoring-in-cardiac-ct-angiography-using-convolutional-neural-networks">Automatic Coronary Calcium Scoring in Cardiac CT Angiography using Convolutional Neural Networks</h3>
+<p>Original paper not available online, but abstract seems too application specific and not much novelty on the modeling. Will revisit later if I really have time.</p>
+
+<h3 id="deep-learning-and-structured-prediction-for-the-segmentation-of-mass-in-mammograms">Deep Learning and Structured Prediction for the Segmentation of Mass in Mammograms</h3>
+<p>Two feature learning methods: deep belief networks, and deep convolutional networks, and two classifiers: CRF, and structured SVM.</p>
+
+<p>Not very readable. Looks like CNN use patch-based supervised training. Theoretically CNN can be used as classifier, too, but the authors claims it overfits. So, the CNN is only used to extract features. Other features from a GMM also used and improves results. Not sure how much role CNN played in the over all performance.</p>
+
+<h3 id="learning-tensor-based-features-for-whole-brain-fmri-classification">Learning Tensor-Based Features for Whole-Brain fMRI Classification</h3>
+
+<h3 id="automatic-diagnosis-of-ovarian-carcinomas-via-sparse-multi-resolution-tissue-representation">Automatic Diagnosis of Ovarian Carcinomas via Sparse Multi Resolution Tissue Representation</h3>
+<p>Unsupervised learning, dictionary learning. First, unsupervised learning with three layer of sparse coding of Zeiler’s, and Fisher vector to extract features and train a linear SVM.</p>
+
+<p>Extract patches with two sizes. (I’ve seen same practice before). The experiments also show that Fisher vectors is better than BoW with SPM.</p>
+
+<p>One thing not clear to me: classifier’s output is aggregated with geometric mean? It seems the classification is on a whole tissue sample, which includes multiple patches. Each patches get a classification result, and the final result of the tissue sample is aggregated from all patches extracted from the tissue. Right?</p>
+
+<p>Also this paper “The Importance of Encoding Versus Training with Sparse Coding and Vector Quantization” is cited to show the importance of feature coding.</p>
+
+<h3 id="the-devil-is-in-the-details-an-evaluation-of-recent-feature-encoding-methods">The devil is in the details: an evaluation of recent feature encoding methods.</h3>
+<p>Cited by above paper about the Fisher vector embeddings.</p>
+
+<!-- ### Direct and Simultaneous Four-Chamber Volume Estimation with Supervised Feature Learning
+Cannot found paper online. Not a deep learning paper. Can be skipped.
+ -->
+<h3 id="cross-domain-synthesis-of-medical-images-using-efficient-location-sensitive-deep-network">Cross-Domain Synthesis of Medical Images Using Efficient Location-Sensitive Deep Network</h3>
+
+<h3 id="marginal-space-deep-learning-efficient-architecture-for-detection-in-volumetric-image-data">Marginal Space Deep Learning: Efficient Architecture for Detection in Volumetric Image Data</h3>
+
+<h3 id="u-net-convolutional-networks-for-biomedical-image-segmentation">U-Net: Convolutional Networks for Biomedical Image Segmentation</h3>
+<p>ISBI 2015 winner and looks really good paper. Built based on the ‘fully convolutional network’ of Long et al. Conventional net + upconvolutional (upsampling) net. The features at certain convolutional layer can take the shortcut to the corresponding upconvolutional layer, without going to layer in next scale. the upconvolutional net takes feature both from the shortcut and the up-sampled feature map. Such methods remind me the ladder network proposed recently that achieves good performance only use sparse labeled data.</p>
+
+<p>The authors also referred to “hyper column segmentation” by J. Malik and “Image segmentation with cascaded hierarchical models and logistic disjunctive normal networks” by M Seyed for classification using features from all scales. This paper took a different approach that just define additional special layers (1x1 conv) as a classifier, and learn it together with the rest of CNN. So, there is no need of another classifier. (need to read the ‘network in network’ paper because the 1x1 conv layer is from that paper)</p>
+
+<p>Difference with the ‘full convolutional network’: up-sampling also has large number of channels. (need to revisit the fully convnet for details). Also, there is no full connected layer, which makes it possible to take arbitrary input image size. My understanding is the full connected layer is the only constraints on the input image size. Conv layer does not care about input size. So, user can choose input image size based on GPU memory.</p>
+
+<p>Some cells touch with each other and make the segmentation difficult. So redefine weighted loss, so the background pixels between touching cells have more weights.</p>
+
+<p>Not clear: at the end of upconvolutional net, the 1x1 conv layer maps each of 64 components feature vector to the desired number of classes. It looks like this speical 1x1 conv layer is used as a classifier, and the weights are trained together with the rest of the network. This method remind the the ICCV 2015 paper of training convnet and a random decision tree together. Also I’ve seen somewhere the 1x1 conv layer is used smartly.</p>
+
+<p>The algorithm still use patches, but the patch is much larger than the 2012 ISBI winner. Not necessary to take whole image as input because of possible memory constraint. But such large patch is enough information for segmentation. But how the tiling works? Overlapped patches and segmentation map? I think this is some implementation details that are not that important, compared to the 1x1 conv layer as classifier.</p>
+
+<p>Also use deformation to augment data set.</p>
+
+<p>The author is at DeepMind. Code available online (in Matlab). Also an alternative implementation at <a href="http://arxiv.org/abs/1509.03371">here</a>.</p>
+
+<h3 id="a-novel-cell-detection-method-using-deep-convolutional-neural-network-and-maximum-weight-independent-set">A Novel Cell Detection Method Using Deep Convolutional Neural Network and Maximum-Weight Independent Set</h3>
+<p>paper not available online.</p>
+
+<h3 id="beyond-classification-structured-regression-for-robust-cell-detection-using-convolutional-neural-network">Beyond Classification: Structured Regression For Robust Cell Detection Using Convolutional Neural Network</h3>
+<p>Another cell detection method, that take care of touching cells. But generate a heat map of each cell such that cell center has higher values. The author claims that Ciresan’s membrane detection is pixel based and ignore topology of the map. The model in this paper replace the last layer of conventional CNN by a structure regression layer. To build the model, a target heat-map like mask is defined such that pixels close to true cell center has higher values, and this mask is used as target. Then somehow a cost function is defined (details not clear to me). The remaining is standard CNN from input image 49x49x3.</p>
+
+<p>Each pixel gets prediction from multiple neighbors, so also need a averaging as a fusion step.</p>
+
+<p>Remaining part of the paper is not accessible from Google book.</p>
+
+<h3 id="automatic-feature-learning-for-glaucoma-detection-based-on-deep-learning">Automatic Feature Learning for Glaucoma Detection based on Deep Learning</h3>
+<p>paper not available to public, but the idea is to use a ‘mlpconv’ (network in network paper in 2013) in place of convolutional layer. Also take the output of one CNN as a context input of its own full connected layer (not clear what it means)</p>
+<h3 id="fast-automatic-vertebrae-detection-and-localization-in-pathological-ct-scans---a-deep-learning-approach">Fast Automatic Vertebrae Detection and Localization in Pathological CT Scans - A Deep Learning Approach</h3>
+<p>Paper not available online. CNN output is the relative position (a vector pointing to the center)</p>
+
+<h3 id="unregistered-multiview-mammogram-analysis-with-pre-trained-deep-learning-models">Unregistered Multiview Mammogram Analysis with Pre-trained Deep Learning Models</h3>
+
+<h3 id="deep-neural-networks-for-anatomical-brain-segmentation-cvpr-workshop-2015">Deep Neural Networks for Anatomical Brain Segmentation (CVPR workshop 2015)</h3>
+<p>Used both 3D and 2D orthogonal patches, and also use larger 2D patches. The 2D patches are extracted from down-sampled input.</p>
+
+<p>Multi-label segmentation.</p>
+
+<p>One thing not clear: the patch at x plane and y plane share the same weight, which does not make sense to me. Can we assume that CNN must learn same features at orthogonal direction?</p>
+
+<h3 id="deep-learning-for-neuroimaging-a-validation-study">Deep learning for neuroimaging: a validation study</h3>
+<p>For fMRI etc.</p>
+
+<h3 id="classification-of-histology-sections-via-multispectral-convolutional-sparse-coding">Classification of Histology Sections via Multispectral Convolutional Sparse Coding</h3>
+<p>Used convolutional sparse coding + SPM + SVM for image classification. CSC is based on Kavu.. et al. Only one CSC layer, and not deep. If it uses deeper network like U-net, probably do not need SPM and SVM any more, because the features at one pixels should have information of neighboring pixels due to the pooling and unpooling, and 1x1 conv layer can be trained as classifier so no need SVM.</p>
+
+<h3 id="hough-cnn-deep-learning-for-segmentation-of-deep-brain-regions-in-mri-and-ultrasound">Hough-CNN: Deep Learning for Segmentation of Deep Brain Regions in MRI and Ultrasound</h3>
+
+<h3 id="efficient-multi-scale-3d-cnn-with-fully-connected-crf-for-accurate-brain-lesion-segmentation">Efficient Multi-Scale 3D CNN with Fully Connected CRF for Accurate Brain Lesion Segmentation</h3>
+
+<h3 id="a-fully-convolutional-neural-network-for-cardiac-segmentation-in-short-axis-mri">A Fully Convolutional Neural Network for Cardiac Segmentation in Short-Axis MRI</h3>
+
+<h3 id="v-net-fully-convolutional-neural-networks-for-volumetric-medical-image-segmentation">V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation</h3>
+<p>A 2016 paper on full 3D convnet.</p>
+
+
+
+      </section>
+      <footer>
+        
+        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+
+
+  
+  </body>
+</html>

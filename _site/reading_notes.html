@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>general reading notes | Dawei’s random notes on machine learning and computer vision</title>
+<meta property="og:title" content="general reading notes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Some notes of reading papers and attending conferences." />
+<meta property="og:description" content="Some notes of reading papers and attending conferences." />
+<link rel="canonical" href="http://localhost:4000/reading_notes.html" />
+<meta property="og:url" content="http://localhost:4000/reading_notes.html" />
+<meta property="og:site_name" content="Dawei’s random notes on machine learning and computer vision" />
+<script type="application/ld+json">
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/reading_notes.html","publisher":null,"image":null,"headline":"general reading notes","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e936c88afd85f505dc8ecee029c7f4cd5b96f73a">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Dawei's random notes on machine learning and computer vision</h1>
+        <p>Some notes of reading papers and attending conferences. </p>
+
+        
+          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
+        
+
+        
+
+        
+      </header>
+      <section>
+
+      <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h3 id="semantic-component-analysis">Semantic Component Analysis</h3>
+<p>Each component is constrained to have semantic meanings. See videolecture.net. Can be used for multi-channel image decomposition/segmentation. (energy dispersion imaging)</p>
+
+<h3 id="training-deep-networks-with-structured-layers-by-matrix-backpropagation">Training Deep Networks with Structured Layers by Matrix Backpropagation</h3>
+<p>This paper cited the bilinear CNN paper. Add a structure matrix layer (SVD) after CNN layers, and have a lot of theoretical proof. Worth reading?</p>
+
+<h3 id="receptive-fields-of-single-neurons-in-the-cats-striate-cortex">Receptive fields of single neurons in the cat’s striate cortex</h3>
+<p>This is the original Hubel and Wiesel’s work. May not read it but need to know this paper anyway.</p>
+
+<h3 id="fiber-connection-pattern-guided-structured-sparse-representation-of-whole-brain-fmri-signals-for-functional-network-inference">Fiber Connection Pattern­ guided Struc­tured Sparse Representation of Whole-brain FMRI Signals for Functional Network Inference</h3>
+<p>Not really a deep learning paper but my past research on fMRI.</p>
+
+<h3 id="nonlinear-regression-on-riemannian-manifolds-and-its-applications-to-neuro-image-analysis">Nonlinear Regression on Riemannian Manifolds and Its Applications to Neuro-Image Analysis</h3>
+<p>May not be a deep learning paper. Add it anyway.</p>
+
+<h3 id="predicting-activation-across-individuals-with-resting-state-functional-connectivity-based-multi-atlas-label-fusion">Predicting Activation across Individuals with Resting-State Functional Connectivity based Multi-Atlas Label Fusion</h3>
+
+<h3 id="emergence-of-simple-cell-receptive-field-properties-by-learning-a-sparse-code-for-natural-images">Emergence of simple-cell receptive field properties by learning a sparse code for natural images</h3>
+<p>An early paper about human vision that many CNN works are based on.</p>
+
+<h3 id="oriented-edge-forests-for-boundary-detection">Oriented Edge Forests for Boundary Detection</h3>
+
+<h3 id="multimodal-cortical-parcellation-based-on-anatomical-and-functional-brain-connectivity">Multimodal Cortical Parcellation Based on Anatomical and Functional Brain Connectivity</h3>
+
+<h3 id="multilevel-parcellation-of-the-cerebral-cortex-using-resting-state-fmri">Multilevel Parcellation of the Cerebral Cortex Using Resting-State fMRI</h3>
+
+<h3 id="fast-high-dimensional-filtering-using-the-permutohedral-lattice">Fast High-Dimensional Filtering Using the Permutohedral Lattice</h3>
+<p>Read this paper because of another one “Conditional Random Fields as Recurrent Neural Networks”. This paper proposes to to the filtering in the feature space. Each pixel has a feature vector, and all the pixels can be transformed into the high dimensional feature space. The data points are blurred and re-sampled, then mapped back to image space. Bilateral filters can be seen as a special case of the this definition, because the weights with which neighboring pixels contribute to the averaging depends on both the spatial distance and the pixel intensity between the center pixel and neighbor pixel. When the  spatial distance and pixel intensity difference are obtained from another image, bilateral filtering can be used to filtering image A without crossing the edge of image B.</p>
+
+<p>That remind me in fMRI, we can apply spatial smoothing filter on functional image but use bilateral filter with the weights defined by structure image such as T1 or T2. This is better than simple Gaussian smoothing, because the smoothing will not cross boundary between gray and white matter of structure image. Make sense?</p>
+
+<h3 id="reconstructing-visual-experiences-from-brain-activity-evoked-by-natural-movies">Reconstructing visual experiences from brain activity evoked by natural movies</h3>
+<p>Cited from “Inverting Visual Representations with Convolutional Networks.pdf”. Seems the overlapped area of ML and neuroscience.</p>
+
+<h3 id="generative-adversarial-nets"><a href="http://arxiv.org/abs/1406.2661">Generative Adversarial Nets</a></h3>
+<p>This paper proposed a model to generate new examples given existing data. The model includes a generative model <script type="math/tex">G</script> and a discriminative model <script type="math/tex">D</script>. The model <script type="math/tex">G(z)</script> generates new example <script type="math/tex">x</script> from random input <script type="math/tex">z</script>, and model <script type="math/tex">D(x)</script> output the probability of the example <script type="math/tex">x</script> being from the true data distribution.</p>
+
+<p>The training includes an inner loop and outer loop. In the inner loop, model <script type="math/tex">G</script> is fixed, and <script type="math/tex">D</script> is optimized to correctly label both the true observed examples and those generated form <script type="math/tex">G</script>. Once the inner loop converges, <script type="math/tex">D</script> is kept fixed. Then in the outer loop, <script type="math/tex">G</script> is optimized to minimize the probability that <script type="math/tex">D</script> correctly labels the generated examples. When this <em>minmax</em> algorithm converges, the distribution of generated sample <script type="math/tex">x</script> from <script type="math/tex">G</script>, is equal to the true data distribution. When this happens, <script type="math/tex">D</script> equals to <script type="math/tex">1/2</script> for any example <script type="math/tex">x</script>.</p>
+
+<p>In practice, both model <script type="math/tex">G</script> and <script type="math/tex">D</script> are multilayer perceptrons, and the optimization of both models are not on the entire space of possible models, but on the parameters of MLP.</p>
+
+<h3 id="an-analysis-of-single-layer-networks-in-unsupervised-feature-learning"><a href="http://ai.stanford.edu/~ang/papers/nipsdlufl10-AnalysisSingleLayerUnsupervisedFeatureLearning.pdf">An analysis of single-layer networks in unsupervised feature learning</a></h3>
+
+<p>This is an earlier work of the <a href="http://people.ee.duke.edu/~lcarin/icml11-EncodingVsTraining.pdf">paper below</a>. The paper uses different methods for feature extraction, including sparse autoencoder, sparse RBM, K-means and Gaussian mixture model. After the feature mapping is learned, a single-layer model map the input data into feature space and does classification.</p>
+
+<p>After the feature mapping, we get feature map of size <script type="math/tex">M \times M \times K</script>, where <script type="math/tex">M</script> is the size of the single feature map and <script type="math/tex">K</script> is number of filters. Then each <script type="math/tex">M \times M</script> feature map is split into four quadrants, and compute the sum of each quadrant as a pooling. So the final feature map is <script type="math/tex">4K</script> which 4 numbers at each feature map. Such pooling method is different from the more recent pooling.</p>
+
+<p>The main goal of the paper, is to see the effect of some hyperparameters on the classification results. These parameters are number of filters <script type="math/tex">K</script>, the stride <script type="math/tex">s</script>, receptive filed size (that is, the filter size) <script type="math/tex">w</script> and also the whitening as a preprocessing step. The experiments seem to show that these parameters have larger effect on the classification results compared to the choice of feature learning methods. In particular, when using K-means as feature extraction methods, as long as the hyperparameters are chosen correctly, the algorithm get the state-of-the-art results. (This may not be true in year 2016, I think.)</p>
+
+<h3 id="the-importance-of-encoding-versus-training-with-sparse-coding-and-vector-quantization"><a href="http://people.ee.duke.edu/~lcarin/icml11-EncodingVsTraining.pdf">The Importance of Encoding Versus Training with Sparse Coding and Vector Quantization</a></h3>
+
+<p>This paper defines feature learning in two steps: 1) Learn a set of basis functions as dictionaries <script type="math/tex">D</script>. 2) An encoding algorithm that learns a mapping <script type="math/tex">f</script> from the data <script type="math/tex">x</script> to the feature space, given the dictionary <script type="math/tex">D</script>. For example, the first step can use simple methods like K-means to learn the dictionary, or more advanced methods like sparse coding, or sparse autoencoders. The second step also can be sparse coding, orthogonal matching pursuit, etc.</p>
+
+<p>The paper choose the combinations of methods in step 1 and those in step 2, and compare the performance. The results in this paper and previous work show that the choice of dictionaries are not critical. For example, even random chosen orthogonal vectors as dictionary can get good results.</p>
+
+<p>The paper also shows that sparse coding used for both steps achieves better results than other combination of methods when there is not many labeled data.</p>
+
+<p>Question: how the labels are used for training in both steps? First step should be unsupervised, so no labeled data is required. So labels are used in encoding step? That does not make much sense.</p>
+
+<h3 id="convolutional-clustering-for-unsupervised-learning"><a href="">Convolutional Clustering for Unsupervised Learning</a></h3>
+<p>This paper have two main contributions on the feature learning and the convnet model structures, respectively. First, the feature learning is based on K-means. When the conventional K-means method is used for learning the dictionaries, a collection of patches is randomly selected from the training data, and the patch is the same dimension as the dictionaries. In this work, a random location is selected first from a random selected input image, a patch of twice the size of the dictionary dimension is extracted around this location. The current filters are applied on this patch in a Convolutional way. the new location within the patch is selected where the activation is largest, and a new patch is defined and extracted at this new location, so the new patch has the same size as the filter. The author claims that such method can remove the redundancy within the dictionaries.</p>
+
+<p>the second part of the paper is to learn the sparse connection between features of one layer to those of next layer. It looks the majority of convnet now days just use full connected layers. The authors of this paper claim such full connected layer is not optimal. To learn the connection, the authors define a connection matrix which maps the previous feature to next layer. (details not read)</p>
+
+<h3 id="understanding-deep-image-representations-by-inverting-them-nov-2014"><a href="http://arxiv.org/abs/1412.0035">Understanding Deep Image Representations by Inverting Them (Nov 2014)</a></h3>
+
+<ul>
+  <li>Inversion method works for SIFT, HOG and also convnet. Inversion is defined as a regularized regression problem.</li>
+  <li>Implement SIFT and HOG as a special type of convnet.</li>
+  <li>The main purpose of this paper is to see how much information remains in the feature maps of each layer. The purpose is not to construct an image that best match the target image. Otherwise, we can simply use the target image as initial input, and the algorithm will converge at the first iteration, because the cost function already at its lowest value.</li>
+</ul>
+
+<p>On the algorithm side, define a feature transform (learned from training data) <script type="math/tex">\phi(x)</script> on input image <script type="math/tex">x</script>. Given the transform <script type="math/tex">\phi(x_0)</script> for target image <script type="math/tex">x_0</script>, the cost function is defined as the norm of the difference between <script type="math/tex">\phi(x_0)</script> and the feature map <script type="math/tex">\phi(x)</script> of input image <script type="math/tex">x</script>,</p>
+
+<script type="math/tex; mode=display">L(x) = || \phi(x) - \phi(x_0)||^2_2 + R(x)</script>
+
+<h3 id="intriguing-properties-of-neural-networks">Intriguing properties of neural networks</h3>
+<p>Adding noise to image will change the classification results, even the noise is imperceptible to human vision. However, the injected noise is high-pass structured noise which can rarely occur in natural images. (found from <a href="http://arxiv.org/abs/1412.0035">mah14</a>)</p>
+
+<h3 id="visualizing-and-understanding-convolutional-networks">Visualizing and understanding convolutional networks</h3>
+<p>backtrack the network computations to identify which image patches are responsible for certain neural activations. Compared to <a href="http://arxiv.org/abs/1506.02753">dos15</a>, this paper also uses additional information: the max location of the intermediate layers.</p>
+
+<h3 id="inverting-visual-representations-with-convolutional-networks-cvpr-2016"><a href="http://arxiv.org/abs/1506.02753">Inverting Visual Representations with Convolutional Networks</a> (CVPR 2016)</h3>
+<ul>
+  <li>This paper also generates images from a trained convnet. Instead of finding an image <script type="math/tex">x</script> that minimize the Euclidean distance between <script type="math/tex">\phi(x)</script> and <script type="math/tex">\phi(x_0)</script>, as in <a href="http://arxiv.org/abs/1412.0035">mah14</a>,  this paper explicitly minimize the distance between <script type="math/tex">x</script> and <script type="math/tex">x_0</script>, where <script type="math/tex">x_0</script> is the target image.</li>
+  <li><a href="http://arxiv.org/abs/1412.0035">mah14</a> need optimization at test, but this work does not. It only need forward pass during test.</li>
+  <li>Define a Up-convnet <script type="math/tex">f(\phi, W)</script> for inversion, where <script type="math/tex">\phi</script> is the feature map, and <script type="math/tex">W</script> is parameter of <script type="math/tex">f</script>. Optimize <script type="math/tex">W</script> to minimize
+<script type="math/tex">|| x_i - f(\Phi(x_i))||^2_2</script>.</li>
+  <li>Also implement HOG, SIFT and other traditional feature representations with convnet.</li>
+</ul>
+
+<h3 id="reconstructing-visual-experiences-from-brain-activity-evoked-by-natural-movies-1"><a href="http://www.cell.com/current-biology/abstract/S0960-9822(11)00937-7">Reconstructing visual experiences from brain activity evoked by natural movies</a></h3>
+<p>Found this work from <a href="http://arxiv.org/abs/1506.02753">dos15</a> which potentially can be used for inverting signal from real brain, like in this paper.</p>
+
+<h3 id="learning-to-generate-chairs-tables-and-cars-with-convolutional-networks">Learning to Generate Chairs, Tables and Cars with Convolutional Networks</h3>
+<ul>
+  <li>Based on the knowledge learned from other chairs, the model is able to generate a chair with new view angle, given an example of this chair in one view angle.</li>
+  <li>The train sample is opposite to the normal training samples: input is <script type="math/tex">c, v, \theta</script>, where <script type="math/tex">c</script> is the class label, <script type="math/tex">v</script> is the view angle, and <script type="math/tex">\theta</script> is other transform parameters, such as scaling, shifting, rotation, etc. Output is <script type="math/tex">(x, s)</script>, where <script type="math/tex">x</script> is the full image and <script type="math/tex">s</script> is the mask of the object in the image.</li>
+  <li>The model definition: The three input vector are fed into a few full connection layers then concated into a long feature vector. The feature enters an <strong>unconvolutional network</strong>, which is indeed a upsampling (unpooling) step. To learn the parameters of this network, the cost fucntion is defined as the error of reconstruction.</li>
+</ul>
+
+<p>This paper is by the same author of <a href="http://arxiv.org/abs/1506.02753">dos15</a>, but I could not find how they referenced each other…</p>
+
+<h3 id="spatial-transformer-networks">Spatial Transformer Networks</h3>
+<p>Explicitly define a special layer for the spatial transformation such as rotation, scaling, etc. The parameter of this layer is learned together with the rest of the network.</p>
+
+<p>Possible application: This can potentially be used on medical image segmentation. In medical imaging, segmentation and registration are coupled problems. An ideal model can optimize the segmentation and registration in a single cost function. A fully convolutional net can be used for segmentation. Together with this spatial transformation layer, we can probably have a integrated model for both segmentation and registration.</p>
+
+<h3 id="spatial-pyramid-pooling-in-deep-convolutional-networks-for-visual-recognition">Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition</h3>
+<p>Really should read this paper.</p>
+
+<h3 id="learning-to-transduce-with-unbounded-memory">Learning to Transduce with Unbounded Memory</h3>
+<p>Talks about neural stacks. Need to take a look.</p>
+
+<h3 id="deep-neural-decision-forests">Deep Neural Decision Forests</h3>
+<p>Found this talk on ICCV 2015 videos. Use random forests for classifier and learn it with CNN.</p>
+
+<h3 id="3d-convolutional-neural-networks-for-human-action-recognition">3D Convolutional Neural Networks for Human Action Recognition</h3>
+<p>An early paper of 3D convnet. Need to check who cited it, and how the 3D conv works.</p>
+
+<h3 id="inceptionism-going-deeper-into-neural-networks-2015">Inceptionism: Going deeper into neural networks, 2015</h3>
+
+<h3 id="rethinking-the-inception-architecture-for-computer-vision-late-2015">Rethinking the Inception Architecture for Computer Vision (late 2015)</h3>
+<p>Proposed use 1x3 and 3x1 filter to replace 3x3 conv filter. Can be used to approximate 3D filter, too? Is that smae thing with separable filter. Need to read details.</p>
+
+<h3 id="inception-v4-inception-resnet-and-the-impact-of-residual-connections-on-learning-feb-2016">Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning (Feb 2016)</h3>
+
+<h3 id="batch-normalization-accelerating-deep-network-training-by-reducing-internal-covariate-shift">Batch normalization: Accelerating deep network training by reducing internal covariate shift</h3>
+
+<h3 id="rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation">Rich feature hierarchies for accurate object detection and semantic segmentation</h3>
+
+<h3 id="predicting-eye-fixations-using-convolutional-neural-networks">Predicting Eye Fixations using Convolutional Neural Networks</h3>
+<p>About visual attention and saliency.</p>
+
+<h3 id="explaining-and-harnessing-adversarial-examples">Explaining and harnessing adversarial examples</h3>
+
+<h3 id="how-transferable-are-features-in-deep-neural-networks">How transferable are features in deep neural networks</h3>
+<p>Talks about which layer to transfer in what situation beween orignal task and new task.</p>
+
+<h3 id="deep-neural-networks-are-easily-fooled-high-confidence-predictions-for-unrecognizable-images">Deep neural networks are easily fooled: High confidence predictions for unrecognizable images</h3>
+
+<h3 id="from-generic-to-specific-deep-representations-for-visual-recognition">From generic to specific deep representations for visual recognition</h3>
+
+<h3 id="learning-transferable-features-with-deep-adaptation-networks">Learning transferable features with deep adaptation networks</h3>
+<p>have a RKHS to embed the feature in source domain and help the task in target domain.</p>
+
+<h3 id="unsupervised-learning-of-invariant-feature-hierarchies-with-applications-to-object-recognition-2007">Unsupervised Learning of Invariant Feature Hierarchies with Applications to Object Recognition (2007)</h3>
+<p>An early paper for unsupervised learning using autoencoder. But also introduced a tranformation parameter <script type="math/tex">U</script> that can be optimized. So the encoder has parameter <script type="math/tex">W_C</script> and <script type="math/tex">U</script>, and decoder has parameter <script type="math/tex">W_D</script> and <script type="math/tex">U</script>. Also introduced a hidden/auxiliary variable and a cost term of the norm between the encoding and the hidden variable, and use EM-like optimization. The total cost function is like <script type="math/tex">|| Y - Dec(Z, U; W_D) || + \alpha || Z - Enc(Y, U; W_C) ||</script>.</p>
+
+<p>The hyperparameter <script type="math/tex">\alpha</script> is set to one in the paper. I’m thinking if <script type="math/tex">\alpha = 0</script>, the model does not have any constraints on the form of <script type="math/tex">Z</script>, isn’t it that we just get a dictionary learning (without regularization yet)? In that case, we cannot learn <script type="math/tex">W_C</script> either. So <script type="math/tex">\alpha</script> have a continuous control between a autoencoder model, and a dictionary learning (or, sparse coding) model. Is that right?</p>
+
+<p>Compared to sparse coding, this autoencoder does not need optimization step during test, because of the encoder available for a simple forward pass.</p>
+
+<p>The additional transformation parameter <script type="math/tex">U</script> is reminiscent of the more recent spatial transormer network, which not only model shifting but also rotation and other thansforms. Also, the <script type="math/tex">U</script> in this paper is not learned, but just copied from the encoding step to the decoding.</p>
+
+<p>Also, because of the introduction of <script type="math/tex">U</script>, no two filters are shifted version of each other. (future convolutional autoencoder can achieve this, too)</p>
+
+<p>During training, the patches are randomly selected for training images. Also, it seems some parameters of the sparsity component are constrained during the training, but relaxed during test, because the constrained form does not have enough information for classification.</p>
+
+<p>The autoencoder includes two hidden encoding layers. the second layer selectively connects to the feature map of second layer. This may be because of the computational cost, though the autho didn’t say the reason.</p>
+
+<h3 id="sparse-feature-learning-for-deep-belief-networks-2008">Sparse Feature Learning for Deep Belief Networks (2008)</h3>
+<p>Have read it but don’t remember details. Basically it’s encoder-decoder model using RBM-like machines. Learning is still EM.</p>
+
+<h3 id="fisher-vectors-meet-neural-networks-a-hybrid-classification-architecture">Fisher Vectors Meet Neural Networks: A Hybrid Classification Architecture</h3>
+
+<h3 id="deformable-part-models-are-convolutional-neural-networks-2015">Deformable Part Models are Convolutional Neural Networks (2015)</h3>
+<p>CVPR paper that I haven’t got chance to read.</p>
+
+<h3 id="deepcontour-a-deep-convolutional-feature-learned-by-positive-sharing-loss-for-contour-detection">DeepContour: A Deep Convolutional Feature Learned by Positive-sharing Loss for Contour Detection</h3>
+
+<h3 id="deepedge-a-multi-scale-bifurcated-deep-network-for-top-down-contour-detection">DeepEdge: A Multi-Scale Bifurcated Deep Network for Top-Down Contour Detection</h3>
+
+<h3 id="learning-and-transferring-mid-level-image-representations-using-convolutional-neural-networks-2014">Learning and Transferring Mid-Level Image Representations using Convolutional Neural Networks (2014)</h3>
+<p>Transfer learning.</p>
+
+<h3 id="cnn-features-off-the-shelf-an-astounding-baseline-for-recognition-2014">CNN Features Off-the-Shelf: An Astounding Baseline for Recognition (2014)</h3>
+<p>Use pretrained net as a feature extractor and train linear SVM on top.</p>
+
+<h3 id="from-generic-to-specific-deep-representations-for-visual-recognition-2014">From generic to specific deep representations for visual recognition (2014)</h3>
+
+<h4 id="xnor-net-imagenet-classification-using-binary-convolutional-neural-networks">XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks</h4>
+<p>Latest binary network. Can run on cpu.</p>
+
+<h3 id="deep-networks-with-stochastic-depth">Deep Networks with Stochastic Depth</h3>
+
+<h3 id="generative-image-modeling-using-style-and-structure-adversarial-networks">Generative Image Modeling using Style and Structure Adversarial Networks</h3>
+
+<h3 id="deep-learning-in-bioinformatics">Deep Learning in Bioinformatics</h3>
+
+<h3 id="towards-bayesian-deep-learning-a-survey">Towards Bayesian Deep Learning: A Survey</h3>
+
+<h3 id="structured-and-efficient-variational-deep-learning-with-matrix-gaussian-posteriors">Structured and Efficient Variational Deep Learning with Matrix Gaussian Posteriors</h3>
+
+<h3 id="expectation-backpropagation-parameter-free-training-of-multilayer-neural-networks-with-continuous-or-discrete-weights">Expectation Backpropagation: Parameter-Free Training of Multilayer Neural Networks with Continuous or Discrete Weights</h3>
+
+<h3 id="deconvolutional-networks">Deconvolutional Networks</h3>
+<p>An old paper. The name of the paper is a bit confusing: although it is named as deconvolutional networks, it is really a convolutinoal sparse coding. The input image is assumed to be the sum of product between a hidden feature map and a filter. The hidden feature map is larger than the input image due to the convolution. The author calls such convolutional sparse coding as top-down, and call the conventional LeCunn convolution as bottom-up.</p>
+
+<h3 id="fast-exact-and-multi-scale-inference-for-semantic-image-segmentation-with-deep-gaussian-crfs">Fast, Exact and Multi-Scale Inference for Semantic Image Segmentation with Deep Gaussian CRFs</h3>
+<p>Solve Gaussian MRF by linear equation. Implemented the solver on GPU, and also use multi-scale. Seems too complicated.</p>
+
+<h3 id="evaluating-the-visualization-of-what-a-deep-neural-network-has-learned">Evaluating the visualization of what a Deep Neural Network has learned</h3>
+<p>Mentioned that “Layer-wise Relevance Propagation” is a better method for visualization of CNN, than the old deconvolution method.</p>
+
+<p>After a quick look, not that interesting to me. The work is to find which set of pixels are most important for classificaiton.</p>
+
+<h3 id="any-vlad-paper">Any VLAD paper</h3>
+
+<h3 id="going-deeper-with-convolutions">Going deeper with convolutions</h3>
+<p>GoogleNet papers. should I read it?</p>
+
+<h3 id="intriguing-properties-of-neural-networks-1">Intriguing properties of neural networks</h3>
+<p>An early papers that shows a small pertubation to input image can have big impact on output of deep network.</p>
+
+<h3 id="deep-neural-networks-are-easily-fooled-high-confidence-predictions-for-unrecognizable-images-1">Deep neural networks are easily fooled: High confidence predictions for unrecognizable images</h3>
+
+<h3 id="deep-residual-learning-for-image-recognition">Deep Residual Learning for Image Recognition</h3>
+
+<h3 id="identity-mappings-in-deep-residual-networks">Identity Mappings in Deep Residual Networks</h3>
+<p>A follow up of the residual net.</p>
+
+<h3 id="highway-networks">Highway networks</h3>
+
+<h3 id="unsupervised-representation-learning-with-deep-convolutional">UNSUPERVISED REPRESENTATION LEARNING WITH DEEP CONVOLUTIONAL</h3>
+<p>GENERATIVE ADVERSARIAL NETWORKS</p>
+
+<h3 id="discriminative-regularization-for-generative-models">Discriminative Regularization for Generative Models</h3>
+
+<h3 id="feedforward-semantic-segmentation-with-zoom-out-features">Feedforward semantic segmentation with zoom-out features</h3>
+
+<h3 id="composing-graphical-models-with-neural-networks-for-structured-representations-and-fast-inference">Composing graphical models with neural networks for structured representations and fast inference</h3>
+
+<h3 id="deep-convolutional-inverse-graphics-network">Deep Convolutional Inverse Graphics Network</h3>
+
+<h3 id="adversarial-autoencoders">Adversarial Autoencoders</h3>
+<p>The discriminator take the hidden variable z as input (either from the encoder of AE, as negative sample, or from a prior distribution, as positive example). Replaced the KL divergence cost function with the Adversarial. This is because, according to the paper, that original KL optimize <script type="math/tex">q(z)</script> to pick the modes of <script type="math/tex">p(z)</script>, but Adversarial will optimize <script type="math/tex">q(z)</script> to the whole distribution of <script type="math/tex">p(z)</script>.</p>
+
+<p>LW: if that is the true reason of using Adversarial, we can also think about expectation Propagation, which seems to match q(z) to the whole P(z), too.</p>
+
+<p>The optimization is iterative. In both the Adversarial optimization step and the the AE step, the encoder is optimized. In Adversarial step, encoder is optimized to match q(z) to p(z). In AE step, encoder is optimized to minimize the reconstruction error. In other Adversarial+AE work, there is often a trade off between the two goal of optimization, but here the two optimization step are done iteratively. How to achieve the trade-off for the encoder?</p>
+
+<h3 id="adversarially-learned-inference">Adversarially Learned Inference</h3>
+<p>Given data, generate hidden representations; Given hidden z, generate data. Use discriminator net to tell the two pairs apart.</p>
+
+<h3 id="composing-graphical-models-with-neural-networks-for-structured-representations-and-fast-inference-1">Composing graphical models with neural networks for structured representations and fast inference</h3>
+
+<h3 id="improved-techniques-for-training-gans">Improved Techniques for Training GANs</h3>
+
+<h3 id="photo-stylistic-brush-robust-style-transfer-via-superpixel-based-bipartite-graph">Photo Stylistic Brush: Robust Style Transfer via Superpixel-Based Bipartite Graph</h3>
+
+
+
+      </section>
+      <footer>
+        
+        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="/assets/js/scale.fix.js"></script>
+
+
+  
+  </body>
+</html>
