@@ -1,13 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
-
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width,maximum-scale=2">
-    <meta name="description" content="Da-Wei's random notes on machine learning and computer vision : Some notes of reading papers and attending conferences. ">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=91e9e1b3629f92c9013aaa4e47ca40205e1802ff">
 
 <!-- Begin Jekyll SEO tag v2.3.0 -->
 <title>general reading notes | Da-Wei’s random notes on machine learning and computer vision</title>
@@ -22,26 +17,30 @@
 {"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/reading_notes.html","publisher":null,"image":null,"headline":"general reading notes","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=a830818efc46bba96af95307f5a06678746c31a2">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>Da-Wei's random notes on machine learning and computer vision</h1>
+        <p>Some notes of reading papers and attending conferences. </p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="http://github.com/weiliu620/notes">View on GitHub</a>
+        
+          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
+        
 
-          <h1 id="project_title">Da-Wei's random notes on machine learning and computer vision</h1>
-          <h2 id="project_tagline">Some notes of reading papers and attending conferences. </h2>
+        
 
-          
-        </header>
-    </div>
+        
+      </header>
+      <section>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+      <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
 <h3 id="semantic-component-analysis">Semantic Component Analysis</h3>
@@ -282,9 +281,9 @@
 <h3 id="adversarial-autoencoders">Adversarial Autoencoders</h3>
 <p>The discriminator take the hidden variable z as input (either from the encoder of AE, as negative sample, or from a prior distribution, as positive example). Replaced the KL divergence cost function with the Adversarial. This is because, according to the paper, that original KL optimize <script type="math/tex">q(z)</script> to pick the modes of <script type="math/tex">p(z)</script>, but Adversarial will optimize <script type="math/tex">q(z)</script> to the whole distribution of <script type="math/tex">p(z)</script>.</p>
 
-<p>LW: if that is the true reason of using Adversarial, we can also think about expectation Propagation, which seems to match q(z) to the whole P(z), too.</p>
+<p>LW: if that is the true reason of using Adversarial, we can also think about expectation Propagation, which seems to match <script type="math/tex">q(z)</script> to the whole <script type="math/tex">p(z)</script>, too.</p>
 
-<p>The optimization is iterative. In both the Adversarial optimization step and the the AE step, the encoder is optimized. In Adversarial step, encoder is optimized to match q(z) to p(z). In AE step, encoder is optimized to minimize the reconstruction error. In other Adversarial+AE work, there is often a trade off between the two goal of optimization, but here the two optimization step are done iteratively. How to achieve the trade-off for the encoder?</p>
+<p>The optimization is iterative. In both the Adversarial optimization step and the the AE step, the encoder is optimized. In Adversarial step, encoder is optimized to match <script type="math/tex">q(z)</script> to <script type="math/tex">p(z)</script>. In AE step, encoder is optimized to minimize the reconstruction error. In other Adversarial+AE work, there is often a trade off between the two goal of optimization, but here the two optimization step are done iteratively. How to achieve the trade-off for the encoder?</p>
 
 <h3 id="adversarially-learned-inference">Adversarially Learned Inference</h3>
 <p>Given data, generate hidden representations; Given hidden z, generate data. Use discriminator net to tell the two pairs apart.</p>
@@ -296,19 +295,18 @@
 <h3 id="photo-stylistic-brush-robust-style-transfer-via-superpixel-based-bipartite-graph">Photo Stylistic Brush: Robust Style Transfer via Superpixel-Based Bipartite Graph</h3>
 
 
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
+      </section>
+      <footer>
         
-        <p class="copyright">Da-Wei's random notes on machine learning and computer vision maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
         
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
+    <script src="/assets/js/scale.fix.js"></script>
 
-    
+
+  
   </body>
 </html>

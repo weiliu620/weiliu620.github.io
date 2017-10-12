@@ -241,9 +241,9 @@ GENERATIVE ADVERSARIAL NETWORKS
 ### Adversarial Autoencoders
 The discriminator take the hidden variable z as input (either from the encoder of AE, as negative sample, or from a prior distribution, as positive example). Replaced the KL divergence cost function with the Adversarial. This is because, according to the paper, that original KL optimize $$q(z)$$ to pick the modes of $$p(z)$$, but Adversarial will optimize $$q(z)$$ to the whole distribution of $$p(z)$$.
 
-LW: if that is the true reason of using Adversarial, we can also think about expectation Propagation, which seems to match q(z) to the whole P(z), too.
+LW: if that is the true reason of using Adversarial, we can also think about expectation Propagation, which seems to match $$q(z)$$ to the whole $$p(z)$$, too.
 
-The optimization is iterative. In both the Adversarial optimization step and the the AE step, the encoder is optimized. In Adversarial step, encoder is optimized to match q(z) to p(z). In AE step, encoder is optimized to minimize the reconstruction error. In other Adversarial+AE work, there is often a trade off between the two goal of optimization, but here the two optimization step are done iteratively. How to achieve the trade-off for the encoder?
+The optimization is iterative. In both the Adversarial optimization step and the the AE step, the encoder is optimized. In Adversarial step, encoder is optimized to match $$q(z)$$ to $$p(z)$$. In AE step, encoder is optimized to minimize the reconstruction error. In other Adversarial+AE work, there is often a trade off between the two goal of optimization, but here the two optimization step are done iteratively. How to achieve the trade-off for the encoder?
 
 ### Adversarially Learned Inference
 Given data, generate hidden representations; Given hidden z, generate data. Use discriminator net to tell the two pairs apart.

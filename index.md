@@ -15,3 +15,5 @@ title: machine learning and computer vision notes
 ### [Segmentation](segmentation.md)
 
 ### [Texture Analysis](texture.md)
+
+### [Random notes](random_notes.md)

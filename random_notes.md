@@ -4,3 +4,10 @@ At each iteration, the planner does not use the new state from taking the action
 
 Roboschool install notes:
 yum install ffmpeq
+
+
+### Tensorflow related
+It seems that the best way of defining object-oriented model is that:
+- Define a class of the algorithm. The class includes methods of running the algorithm with symbolic variables.
+- Do not define Tensorflow sessions in the class, and do not include any `tf.run` in the methods definition. The methods should only define the TF ops.
+- In the main program, define sessions, graphs, and `tf.run` the ops defined in the ablove methods. 
