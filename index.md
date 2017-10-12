@@ -1,6 +1,6 @@
-<!-- ---
+---
 title: machine learning and computer vision notes
---- -->
+---
 
 ## [CVPR 2017 notes](CVPR_review.md)
 

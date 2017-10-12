@@ -72,4 +72,19 @@ The cost/value function is defined such that the expectation with respect to the
 
 On-policy evaluates and improves the policy that is used to generate the data.
 
-From Stackoverflow, off-policy learning such as Q-learning may not be stable, due to the max operation, especially when using functional approximation in case of continuous state. However, recent DQN use replay buffer, and make learning off-policy model more stable. 
+From Stackoverflow, off-policy learning such as Q-learning may not be stable, due to the max operation, especially when using functional approximation in case of continuous state. However, recent DQN use replay buffer, and make learning off-policy model more stable.
+
+## Notes: On-policy control with approximation
+For problems with continuous states, there are infinite number of choice of state variables, so tabular-based methods such as Q-learning will not work. A natural solution is using functional approximation. In chapter 9 of Sutton's book, functional approximator is used for learning the value function with a fixed policy as input. Then, the method proposed in chapter 10 also learns policy, draw actions from the updated policy and apply the action to the environment. This is called *control*.
+
+It should be noted that in order to *control* the environment while learning the value function, we should learn the state-value function $$Q(s, a)$$ instead of the value function $$Q(s)$$. This is because once $$Q(s)$$ is updated at each iteration, learning a policy based on $$Q(s)$$ still need an optimization process: enumerate all possible actions at current state, and choose action with largest value of $$R_t + Q(s')$$. But in order to know $$S'$$ (the new state), we have to apply each action to the environment, which is impossible at current state.
+
+To show the difference of using function approximation for learning value function, and for both learning and control, here is the algorithm for only learning the value function without control:
+
+<!-- <img src="figures/td_pred.png" alt="Drawing" style="width: 600px;"/> -->
+
+![learn value function without control](figures/td_pred.png)
+
+Here is the algorithm for learning while control the environment at the same time:
+
+![learning while control](figures/sarsa_control.png)
