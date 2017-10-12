@@ -1,6 +1,12 @@
 ---
 title: segmentation
 ---
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
 Now it's time to have a dedicated page for segmentation.
 
 ### Fully Convolutional Networks for Semantic Segmentation

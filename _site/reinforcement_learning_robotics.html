@@ -1,48 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="Da-Wei's random notes on machine learning and computer vision : Some notes of reading papers and attending conferences. ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=63755ca7fba97bf1f8286a3264658c11d14dd481">
 
 <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>Dawei’s random notes on machine learning and computer vision | Some notes of reading papers and attending conferences.</title>
-<meta property="og:title" content="Dawei’s random notes on machine learning and computer vision" />
+<title>RL and Robotics | Da-Wei’s random notes on machine learning and computer vision</title>
+<meta property="og:title" content="RL and Robotics" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Some notes of reading papers and attending conferences." />
 <meta property="og:description" content="Some notes of reading papers and attending conferences." />
 <link rel="canonical" href="http://localhost:4000/reinforcement_learning_robotics.html" />
 <meta property="og:url" content="http://localhost:4000/reinforcement_learning_robotics.html" />
-<meta property="og:site_name" content="Dawei’s random notes on machine learning and computer vision" />
+<meta property="og:site_name" content="Da-Wei’s random notes on machine learning and computer vision" />
 <script type="application/ld+json">
-{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/reinforcement_learning_robotics.html","publisher":null,"image":null,"headline":"Dawei’s random notes on machine learning and computer vision","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/reinforcement_learning_robotics.html","publisher":null,"image":null,"headline":"RL and Robotics","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-
-    <link rel="stylesheet" href="/assets/css/style.css?v=5408f561ad6ebed73797fa23315f322820281975">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Dawei's random notes on machine learning and computer vision</h1>
-        <p>Some notes of reading papers and attending conferences. </p>
 
-        
-          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
-        
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="http://github.com/weiliu620/notes">View on GitHub</a>
 
-        
+          <h1 id="project_title">Da-Wei's random notes on machine learning and computer vision</h1>
+          <h2 id="project_tagline">Some notes of reading papers and attending conferences. </h2>
 
-        
-      </header>
-      <section>
+          
+        </header>
+    </div>
 
-      <!-- ---
-title: RL and Robotics
---- -->
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 <h3 id="deep-learning-for-detecting-robotic-grasps">Deep Learning for Detecting Robotic Grasps</h3>
 
@@ -113,18 +113,34 @@ title: RL and Robotics
 
 <p>From Stackoverflow, off-policy learning such as Q-learning may not be stable, due to the max operation, especially when using functional approximation in case of continuous state. However, recent DQN use replay buffer, and make learning off-policy model more stable.</p>
 
+<h2 id="notes-on-policy-control-with-approximation">Notes: On-policy control with approximation</h2>
+<p>For problems with continuous states, there are infinite number of choice of state variables, so tabular-based methods such as Q-learning will not work. A natural solution is using functional approximation. In chapter 9 of Sutton’s book, functional approximator is used for learning the value function with a fixed policy as input. Then, the method proposed in chapter 10 also learns policy, draw actions from the updated policy and apply the action to the environment. This is called <em>control</em>.</p>
+
+<p>It should be noted that in order to <em>control</em> the environment while learning the value function, we should learn the state-value function <script type="math/tex">Q(s, a)</script> instead of the value function <script type="math/tex">V(s)</script>. This is because once <script type="math/tex">V(s)</script> is updated at each iteration, learning a policy based on <script type="math/tex">V(s)</script> still need an optimization process: enumerate all possible actions at current state, and choose action with largest value of <script type="math/tex">R_t + \gamma V(s')</script>. But in order to know <script type="math/tex">S'</script> (the new state), we have to apply each action to the environment, which is impossible at current state.</p>
+
+<p>To show the difference of using function approximation for learning value function, and for both learning and control, here is the algorithm for only learning the value function without control:</p>
+
+<!-- <img src="figures/td_pred.png" alt="Drawing" style="width: 600px;"/> -->
+
+<p><img src="/figures/td_pred.png" alt="learn value function without control" /></p>
+
+<p>Here is the algorithm for learning while control the environment at the same time:</p>
+
+<p><img src="/figures/sarsa_control.png" alt="learning while control" /></p>
 
       </section>
-      <footer>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
         
-        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        <p class="copyright">Da-Wei's random notes on machine learning and computer vision maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
         
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="/assets/js/scale.fix.js"></script>
 
-
-  
+    
   </body>
 </html>

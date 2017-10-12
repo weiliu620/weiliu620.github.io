@@ -1,46 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <meta name="description" content="Da-Wei's random notes on machine learning and computer vision : Some notes of reading papers and attending conferences. ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=63755ca7fba97bf1f8286a3264658c11d14dd481">
 
 <!-- Begin Jekyll SEO tag v2.3.0 -->
-<title>texture analysis | Dawei’s random notes on machine learning and computer vision</title>
+<title>texture analysis | Da-Wei’s random notes on machine learning and computer vision</title>
 <meta property="og:title" content="texture analysis" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Some notes of reading papers and attending conferences." />
 <meta property="og:description" content="Some notes of reading papers and attending conferences." />
 <link rel="canonical" href="http://localhost:4000/texture.html" />
 <meta property="og:url" content="http://localhost:4000/texture.html" />
-<meta property="og:site_name" content="Dawei’s random notes on machine learning and computer vision" />
+<meta property="og:site_name" content="Da-Wei’s random notes on machine learning and computer vision" />
 <script type="application/ld+json">
 {"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/texture.html","publisher":null,"image":null,"headline":"texture analysis","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-
-    <link rel="stylesheet" href="/assets/css/style.css?v=5408f561ad6ebed73797fa23315f322820281975">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Dawei's random notes on machine learning and computer vision</h1>
-        <p>Some notes of reading papers and attending conferences. </p>
 
-        
-          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
-        
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="http://github.com/weiliu620/notes">View on GitHub</a>
 
-        
+          <h1 id="project_title">Da-Wei's random notes on machine learning and computer vision</h1>
+          <h2 id="project_tagline">Some notes of reading papers and attending conferences. </h2>
 
-        
-      </header>
-      <section>
+          
+        </header>
+    </div>
 
-      <h3 id="texture-synthesis-using-convolutional-neural-networks">Texture Synthesis Using Convolutional Neural Networks</h3>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h3 id="texture-synthesis-using-convolutional-neural-networks">Texture Synthesis Using Convolutional Neural Networks</h3>
 <p>Use pretrained VGG network as a feature embedding method. Given target image, extract features, and compute Gram matrix <script type="math/tex">G</script> for each layer <script type="math/tex">l</script>. The entry <script type="math/tex">G_{ij}</script> is the inner product of the vectorized feature map <script type="math/tex">F_i</script> and <script type="math/tex">F_j</script>. The Gram matrix does not have spatial information, because texture, by definition, is spatial invariant, and the measurement does not need spatial information.</p>
 
 <p>The experiments show that the model can generate better image if using the feature map up to pool4 layer of the VGG network.</p>
@@ -102,18 +106,19 @@
 <h3 id="image-decomposition-separation-of-texture-from-piecewise-smooth-content">Image Decomposition: Separation of Texture from Piecewise Smooth Content</h3>
 <p>Google and found it for texture and content separation. Donoho’s paper. Note the citation and need to dig into those cited it.</p>
 
-
       </section>
-      <footer>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
         
-        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        <p class="copyright">Da-Wei's random notes on machine learning and computer vision maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
         
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="/assets/js/scale.fix.js"></script>
 
-
-  
+    
   </body>
 </html>

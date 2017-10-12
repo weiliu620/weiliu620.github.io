@@ -2,6 +2,10 @@
 title: medical imaging
 ---
 
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 ### Large-Scale Automatic Reconstruction of Neuronal Processes from Electron Microscopy Images
 
 ### Flexible, high performance convolutional neural networks for image classification (IJCAI, 2011)

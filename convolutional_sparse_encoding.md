@@ -81,5 +81,4 @@ LeCunn's group. use sparse coding.
 
 ### Accurate and efficient linear structure segmentation by leveraging ad hoc features with learned filters
 On retinal segmentation.
-
 --------------------------------------------
