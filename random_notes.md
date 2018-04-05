@@ -10,4 +10,8 @@ yum install ffmpeq
 It seems that the best way of defining object-oriented model is that:
 - Define a class of the algorithm. The class includes methods of running the algorithm with symbolic variables.
 - Do not define Tensorflow sessions in the class, and do not include any `tf.run` in the methods definition. The methods should only define the TF ops.
-- In the main program, define sessions, graphs, and `tf.run` the ops defined in the ablove methods. 
+- In the main program, define sessions, graphs, and `tf.run` the ops defined in the ablove methods.
+
+### Conditional autoencoder
+
+Can we learn an AE and generate new samples, but keep some entries of the new samples fixed? For example, assuming we know part of the new sample image for a convolutional AE, can we generate the rest of the image given the hidden variable and the know part of the sample? 

@@ -10,15 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Some notes of reading papers and attending conferences." />
 <meta property="og:description" content="Some notes of reading papers and attending conferences." />
-<link rel="canonical" href="http://localhost:4000/random_notes.html" />
-<meta property="og:url" content="http://localhost:4000/random_notes.html" />
 <meta property="og:site_name" content="Da-Wei’s random notes on machine learning and computer vision" />
 <script type="application/ld+json">
-{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/random_notes.html","publisher":null,"image":null,"headline":"Da-Wei’s random notes on machine learning and computer vision","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"/random_notes.html","publisher":null,"image":null,"headline":"Da-Wei’s random notes on machine learning and computer vision","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=a830818efc46bba96af95307f5a06678746c31a2">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f44e4950294c7252f55b86ce78cb2bde4df2095b">
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -54,6 +52,10 @@ yum install ffmpeq</p>
   <li>Do not define Tensorflow sessions in the class, and do not include any <code class="highlighter-rouge">tf.run</code> in the methods definition. The methods should only define the TF ops.</li>
   <li>In the main program, define sessions, graphs, and <code class="highlighter-rouge">tf.run</code> the ops defined in the ablove methods.</li>
 </ul>
+
+<h3 id="conditional-autoencoder">Conditional autoencoder</h3>
+
+<p>Can we learn an AE and generate new samples, but keep some entries of the new samples fixed? For example, assuming we know part of the new sample image for a convolutional AE, can we generate the rest of the image given the hidden variable and the know part of the sample?</p>
 
 
       </section>

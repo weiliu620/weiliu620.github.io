@@ -41,7 +41,7 @@ Instead of computing convolution between each patch and filter, we can compute t
 Not a deep learning paper per se, but an image analysis paper on Neuron.
 
 ### Automatic Detection of Cerebral Microbleeds from MR Images via 3D Convolutional Neural Networks.
-Found this one searching vonvnets on 3D volume imaging.
+Found this one searching convnets on 3D volume imaging.
 
 ### A fast and scalable algorithm for training 3D convolutional networks on multi-core and many-core shared memory machines
 Seems more on computational speed up, but also like application on 3D volume image. From the group for neuron membrane study (image segmentation?)
@@ -229,6 +229,23 @@ Used convolutional sparse coding + SPM + SVM for image classification. CSC is ba
 
 ### V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation
 A 2016 paper on full 3D convnet.
+
+### 3D U-Net: learning dense volumetric segmentation from sparse annotation
+Annotation is on multiple 2D slices. Cost function is defined such that unlabeled pixels do not contribute to the gradient descent. Deformation, as a data augmentation method, is used on-the-fly during training. (done by random sampling a vector field for deformation)
+
+### A survey on deep learning in medical image analysis
+Well, it's a survey. Some thoughts when I read it
+
+- Some works in computer vision and also in medical imaging community use RNN for image analysis. The current pixel depends on the left neighbors and also the neighbors above. To me, this is not natural (though may work in practice), because image are bidirectional. The one-side dependence seems fails to model the bi-directional spatial context.
+
+### Multi-atlas segmentation of biomedical images: a survey
+Historically, atlas-bases segmentation methods usually is a registration-based segmentation problem. The single atlas was registered to the target image, and the ground truth labels are also brought to the target image domain with the same deformation.
+
+When there are multiple image with annotation, the old way of segmenting a target image is to first registering all the atlas into a common space, and average the labels. Then registering the average template to the target image, and also bring the averaged labels to the target image space. So, the output is a probability map. In this way, the averaging happens at the atlas domain.
+
+Or, recent methods register each atlas to the target image and bring the labels to the target image, then majority-vote the labels in target image space.
+
+Not all atlas need to be registered to target image space. Because registration is an iterative optimization process, to save computation cost, we can select a subset of the atlas for registration.
 
 
 

@@ -10,15 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Some notes of reading papers and attending conferences." />
 <meta property="og:description" content="Some notes of reading papers and attending conferences." />
-<link rel="canonical" href="http://localhost:4000/medical_imaging.html" />
-<meta property="og:url" content="http://localhost:4000/medical_imaging.html" />
 <meta property="og:site_name" content="Da-Wei’s random notes on machine learning and computer vision" />
 <script type="application/ld+json">
-{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/medical_imaging.html","publisher":null,"image":null,"headline":"medical imaging","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"/medical_imaging.html","publisher":null,"image":null,"headline":"medical imaging","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=a830818efc46bba96af95307f5a06678746c31a2">
+    <link rel="stylesheet" href="/assets/css/style.css?v=f44e4950294c7252f55b86ce78cb2bde4df2095b">
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -83,7 +81,7 @@
 <p>Not a deep learning paper per se, but an image analysis paper on Neuron.</p>
 
 <h3 id="automatic-detection-of-cerebral-microbleeds-from-mr-images-via-3d-convolutional-neural-networks">Automatic Detection of Cerebral Microbleeds from MR Images via 3D Convolutional Neural Networks.</h3>
-<p>Found this one searching vonvnets on 3D volume imaging.</p>
+<p>Found this one searching convnets on 3D volume imaging.</p>
 
 <h3 id="a-fast-and-scalable-algorithm-for-training-3d-convolutional-networks-on-multi-core-and-many-core-shared-memory-machines">A fast and scalable algorithm for training 3D convolutional networks on multi-core and many-core shared memory machines</h3>
 <p>Seems more on computational speed up, but also like application on 3D volume image. From the group for neuron membrane study (image segmentation?)</p>
@@ -271,6 +269,25 @@ Cannot found paper online. Not a deep learning paper. Can be skipped.
 
 <h3 id="v-net-fully-convolutional-neural-networks-for-volumetric-medical-image-segmentation">V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation</h3>
 <p>A 2016 paper on full 3D convnet.</p>
+
+<h3 id="3d-u-net-learning-dense-volumetric-segmentation-from-sparse-annotation">3D U-Net: learning dense volumetric segmentation from sparse annotation</h3>
+<p>Annotation is on multiple 2D slices. Cost function is defined such that unlabeled pixels do not contribute to the gradient descent. Deformation, as a data augmentation method, is used on-the-fly during training. (done by random sampling a vector field for deformation)</p>
+
+<h3 id="a-survey-on-deep-learning-in-medical-image-analysis">A survey on deep learning in medical image analysis</h3>
+<p>Well, it’s a survey. Some thoughts when I read it</p>
+
+<ul>
+  <li>Some works in computer vision and also in medical imaging community use RNN for image analysis. The current pixel depends on the left neighbors and also the neighbors above. To me, this is not natural (though may work in practice), because image are bidirectional. The one-side dependence seems fails to model the bi-directional spatial context.</li>
+</ul>
+
+<h3 id="multi-atlas-segmentation-of-biomedical-images-a-survey">Multi-atlas segmentation of biomedical images: a survey</h3>
+<p>Historically, atlas-bases segmentation methods usually is a registration-based segmentation problem. The single atlas was registered to the target image, and the ground truth labels are also brought to the target image domain with the same deformation.</p>
+
+<p>When there are multiple image with annotation, the old way of segmenting a target image is to first registering all the atlas into a common space, and average the labels. Then registering the average template to the target image, and also bring the averaged labels to the target image space. So, the output is a probability map. In this way, the averaging happens at the atlas domain.</p>
+
+<p>Or, recent methods register each atlas to the target image and bring the labels to the target image, then majority-vote the labels in target image space.</p>
+
+<p>Not all atlas need to be registered to target image space. Because registration is an iterative optimization process, to save computation cost, we can select a subset of the atlas for registration.</p>
 
 
 

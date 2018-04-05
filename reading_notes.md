@@ -33,9 +33,9 @@ An early paper about human vision that many CNN works are based on.
 ### Multilevel Parcellation of the Cerebral Cortex Using Resting-State fMRI
 
 ### Fast High-Dimensional Filtering Using the Permutohedral Lattice
-Read this paper because of another one "Conditional Random Fields as Recurrent Neural Networks". This paper proposes to to the filtering in the feature space. Each pixel has a feature vector, and all the pixels can be transformed into the high dimensional feature space. The data points are blurred and re-sampled, then mapped back to image space. Bilateral filters can be seen as a special case of the this definition, because the weights with which neighboring pixels contribute to the averaging depends on both the spatial distance and the pixel intensity between the center pixel and neighbor pixel. When the  spatial distance and pixel intensity difference are obtained from another image, bilateral filtering can be used to filtering image A without crossing the edge of image B.
+Read this paper because of another one "Conditional Random Fields as Recurrent Neural Networks". This work propose to do the filtering in feature space. Each pixel has a feature vector, and all pixels can be transformed into the high dimensional feature space. The data points are blurred and re-sampled, then mapped back to image space. Bilateral filters can be seen as a special case of the this definition, because the weights with which neighboring pixels contribute to the averaging depends on both the spatial distance and the pixel intensity between the center pixel and neighbor pixel. When spatial distance and pixel intensity difference are obtained from another image, bilateral filtering can be used to filtering image A without crossing the edge of image B.
 
-That remind me in fMRI, we can apply spatial smoothing filter on functional image but use bilateral filter with the weights defined by structure image such as T1 or T2. This is better than simple Gaussian smoothing, because the smoothing will not cross boundary between gray and white matter of structure image. Make sense?
+That remind me in fMRI, where we can apply spatial smoothing filter on functional image but use bilateral filter with the weights defined by structure image such as T1 or T2. This is better than simple Gaussian smoothing, because the smoothing will not cross boundary between gray and white matter of structure image. Make sense?
 
 ### Reconstructing visual experiences from brain activity evoked by natural movies
 Cited from "Inverting Visual Representations with Convolutional Networks.pdf". Seems the overlapped area of ML and neuroscience.
@@ -248,12 +248,26 @@ The optimization is iterative. In both the Adversarial optimization step and the
 ### Adversarially Learned Inference
 Given data, generate hidden representations; Given hidden z, generate data. Use discriminator net to tell the two pairs apart.
 
+### Autoencoding beyond pixels using a learned similarity metric
+Added in 2017. Also use GAN and variational autoencoder. 
+
 ### Composing graphical models with neural networks for structured representations and fast inference
 
 ### Improved Techniques for Training GANs
 
 ### Photo Stylistic Brush: Robust Style Transfer via Superpixel-Based Bipartite Graph
 
+
+### An unifying Review of Linear Gaussian Models
+An classic paper by Roweis et al. that define the state space model and shows that many other models is a special form of it. These models include PCA, factor analysis, ICA, Kalman filter, HMM and others. The state model is defined in the standard form as
+
+$$ x_{t+1} = A x_t + w_t, \qquad w \sim \mathcal{N} (0, Q), \\
+y_t = Cx_t + v_t, \qquad v \sim \mathcal{N}(0, R),
+$$
+
+where $$x$$ is the hidden variables, and $$y$$ is the observations. Hidden variables usually more concisely represent the system and has lower dimension than observed $$y$$. There are two types of problems to solve. One is called *inference*: with known parameters (e.g., $$A, B, Q, R$$) and observations $$y$$, estimate hidden state $$x$$. In certain application, the parameters can be derived from physics of the problem, and the emphasis is to accurate estimate the hidden variable $$x$$. The other is called system identification: given observation $$y$$, estimate parameters. In this case, we do not have good model and the goal is to learn the parameters that explain the data well.
+
+The rest of the paper use this state space model to unify many other models (that I have not read yet). For example, PCA can be seen as the data points are independent temporally, so $$A = 0$$, and factor analysis is even more special form of PCA.  
 
 [1]: http://people.ee.duke.edu/~lcarin/icml11-EncodingVsTraining.pdf
 [mah14]: http://arxiv.org/abs/1412.0035
