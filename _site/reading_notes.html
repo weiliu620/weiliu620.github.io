@@ -1,13 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
-
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width,maximum-scale=2">
-    <meta name="description" content="Da-Wei's random notes on machine learning and computer vision : Some notes of reading papers and attending conferences. ">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=91e9e1b3629f92c9013aaa4e47ca40205e1802ff">
 
 <!-- Begin Jekyll SEO tag v2.3.0 -->
 <title>general reading notes | Da-Wei’s random notes on machine learning and computer vision</title>
@@ -15,33 +10,35 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Some notes of reading papers and attending conferences." />
 <meta property="og:description" content="Some notes of reading papers and attending conferences." />
-<link rel="canonical" href="http://localhost:4000/reading_notes.html" />
-<meta property="og:url" content="http://localhost:4000/reading_notes.html" />
 <meta property="og:site_name" content="Da-Wei’s random notes on machine learning and computer vision" />
 <script type="application/ld+json">
-{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"http://localhost:4000/reading_notes.html","publisher":null,"image":null,"headline":"general reading notes","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
+{"name":null,"description":"Some notes of reading papers and attending conferences.","author":null,"@type":"WebPage","url":"/reading_notes.html","publisher":null,"image":null,"headline":"general reading notes","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=f44e4950294c7252f55b86ce78cb2bde4df2095b">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1>Da-Wei's random notes on machine learning and computer vision</h1>
+        <p>Some notes of reading papers and attending conferences. </p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="http://github.com/weiliu620/notes">View on GitHub</a>
+        
+          <p class="view"><a href="http://github.com/weiliu620/notes">View the Project on GitHub <small></small></a></p>
+        
 
-          <h1 id="project_title">Da-Wei's random notes on machine learning and computer vision</h1>
-          <h2 id="project_tagline">Some notes of reading papers and attending conferences. </h2>
+        
 
-          
-        </header>
-    </div>
+        
+      </header>
+      <section>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+      <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
 <h3 id="semantic-component-analysis">Semantic Component Analysis</h3>
@@ -71,9 +68,9 @@
 <h3 id="multilevel-parcellation-of-the-cerebral-cortex-using-resting-state-fmri">Multilevel Parcellation of the Cerebral Cortex Using Resting-State fMRI</h3>
 
 <h3 id="fast-high-dimensional-filtering-using-the-permutohedral-lattice">Fast High-Dimensional Filtering Using the Permutohedral Lattice</h3>
-<p>Read this paper because of another one “Conditional Random Fields as Recurrent Neural Networks”. This paper proposes to to the filtering in the feature space. Each pixel has a feature vector, and all the pixels can be transformed into the high dimensional feature space. The data points are blurred and re-sampled, then mapped back to image space. Bilateral filters can be seen as a special case of the this definition, because the weights with which neighboring pixels contribute to the averaging depends on both the spatial distance and the pixel intensity between the center pixel and neighbor pixel. When the  spatial distance and pixel intensity difference are obtained from another image, bilateral filtering can be used to filtering image A without crossing the edge of image B.</p>
+<p>Read this paper because of another one “Conditional Random Fields as Recurrent Neural Networks”. This work propose to do the filtering in feature space. Each pixel has a feature vector, and all pixels can be transformed into the high dimensional feature space. The data points are blurred and re-sampled, then mapped back to image space. Bilateral filters can be seen as a special case of the this definition, because the weights with which neighboring pixels contribute to the averaging depends on both the spatial distance and the pixel intensity between the center pixel and neighbor pixel. When spatial distance and pixel intensity difference are obtained from another image, bilateral filtering can be used to filtering image A without crossing the edge of image B.</p>
 
-<p>That remind me in fMRI, we can apply spatial smoothing filter on functional image but use bilateral filter with the weights defined by structure image such as T1 or T2. This is better than simple Gaussian smoothing, because the smoothing will not cross boundary between gray and white matter of structure image. Make sense?</p>
+<p>That remind me in fMRI, where we can apply spatial smoothing filter on functional image but use bilateral filter with the weights defined by structure image such as T1 or T2. This is better than simple Gaussian smoothing, because the smoothing will not cross boundary between gray and white matter of structure image. Make sense?</p>
 
 <h3 id="reconstructing-visual-experiences-from-brain-activity-evoked-by-natural-movies">Reconstructing visual experiences from brain activity evoked by natural movies</h3>
 <p>Cited from “Inverting Visual Representations with Convolutional Networks.pdf”. Seems the overlapped area of ML and neuroscience.</p>
@@ -282,12 +279,15 @@
 <h3 id="adversarial-autoencoders">Adversarial Autoencoders</h3>
 <p>The discriminator take the hidden variable z as input (either from the encoder of AE, as negative sample, or from a prior distribution, as positive example). Replaced the KL divergence cost function with the Adversarial. This is because, according to the paper, that original KL optimize <script type="math/tex">q(z)</script> to pick the modes of <script type="math/tex">p(z)</script>, but Adversarial will optimize <script type="math/tex">q(z)</script> to the whole distribution of <script type="math/tex">p(z)</script>.</p>
 
-<p>LW: if that is the true reason of using Adversarial, we can also think about expectation Propagation, which seems to match q(z) to the whole P(z), too.</p>
+<p>LW: if that is the true reason of using Adversarial, we can also think about expectation Propagation, which seems to match <script type="math/tex">q(z)</script> to the whole <script type="math/tex">p(z)</script>, too.</p>
 
-<p>The optimization is iterative. In both the Adversarial optimization step and the the AE step, the encoder is optimized. In Adversarial step, encoder is optimized to match q(z) to p(z). In AE step, encoder is optimized to minimize the reconstruction error. In other Adversarial+AE work, there is often a trade off between the two goal of optimization, but here the two optimization step are done iteratively. How to achieve the trade-off for the encoder?</p>
+<p>The optimization is iterative. In both the Adversarial optimization step and the the AE step, the encoder is optimized. In Adversarial step, encoder is optimized to match <script type="math/tex">q(z)</script> to <script type="math/tex">p(z)</script>. In AE step, encoder is optimized to minimize the reconstruction error. In other Adversarial+AE work, there is often a trade off between the two goal of optimization, but here the two optimization step are done iteratively. How to achieve the trade-off for the encoder?</p>
 
 <h3 id="adversarially-learned-inference">Adversarially Learned Inference</h3>
 <p>Given data, generate hidden representations; Given hidden z, generate data. Use discriminator net to tell the two pairs apart.</p>
+
+<h3 id="autoencoding-beyond-pixels-using-a-learned-similarity-metric">Autoencoding beyond pixels using a learned similarity metric</h3>
+<p>Added in 2017. Also use GAN and variational autoencoder.</p>
 
 <h3 id="composing-graphical-models-with-neural-networks-for-structured-representations-and-fast-inference-1">Composing graphical models with neural networks for structured representations and fast inference</h3>
 
@@ -295,20 +295,29 @@
 
 <h3 id="photo-stylistic-brush-robust-style-transfer-via-superpixel-based-bipartite-graph">Photo Stylistic Brush: Robust Style Transfer via Superpixel-Based Bipartite Graph</h3>
 
+<h3 id="an-unifying-review-of-linear-gaussian-models">An unifying Review of Linear Gaussian Models</h3>
+<p>An classic paper by Roweis et al. that define the state space model and shows that many other models is a special form of it. These models include PCA, factor analysis, ICA, Kalman filter, HMM and others. The state model is defined in the standard form as</p>
+
+<script type="math/tex; mode=display">x_{t+1} = A x_t + w_t, \qquad w \sim \mathcal{N} (0, Q), \\
+y_t = Cx_t + v_t, \qquad v \sim \mathcal{N}(0, R),</script>
+
+<p>where <script type="math/tex">x</script> is the hidden variables, and <script type="math/tex">y</script> is the observations. Hidden variables usually more concisely represent the system and has lower dimension than observed <script type="math/tex">y</script>. There are two types of problems to solve. One is called <em>inference</em>: with known parameters (e.g., <script type="math/tex">A, B, Q, R</script>) and observations <script type="math/tex">y</script>, estimate hidden state <script type="math/tex">x</script>. In certain application, the parameters can be derived from physics of the problem, and the emphasis is to accurate estimate the hidden variable <script type="math/tex">x</script>. The other is called system identification: given observation <script type="math/tex">y</script>, estimate parameters. In this case, we do not have good model and the goal is to learn the parameters that explain the data well.</p>
+
+<p>The rest of the paper use this state space model to unify many other models (that I have not read yet). For example, PCA can be seen as the data points are independent temporally, so <script type="math/tex">A = 0</script>, and factor analysis is even more special form of PCA.</p>
+
+
 
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
+      <footer>
         
-        <p class="copyright">Da-Wei's random notes on machine learning and computer vision maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
+        <p>This project is maintained by <a href="http://github.com/weiliu620">weiliu620</a></p>
         
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
+    <script src="/assets/js/scale.fix.js"></script>
 
-    
+
+  
   </body>
 </html>
