@@ -254,6 +254,9 @@ Given data, generate hidden representations; Given hidden z, generate data. Use 
 
 ### Photo Stylistic Brush: Robust Style Transfer via Superpixel-Based Bipartite Graph
 
+### SuperPoint: Self-Supervised Interest Point Detection and Description
+
+Encoder-decoder type of neural net that learns interest points from synthetic data. Do homographic data augmentation as a domain adaptation method to fine tune the model. 
 
 [1]: http://people.ee.duke.edu/~lcarin/icml11-EncodingVsTraining.pdf
 [mah14]: http://arxiv.org/abs/1412.0035

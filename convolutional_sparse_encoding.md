@@ -74,7 +74,7 @@ The paper looks like an good application of CS in biological imaging.
 ### Beyond bags of features: Spatial pyramid matching for recognizing natural scene categories.
 Spatial pyramid matching.
 
-### Character- ization of tissue histopathology via predictive sparse decom- position and spatial pyramid matching (2013)
+### Characterization of tissue histopathology via predictive sparse decomposition and spatial pyramid matching (2013)
 
 ### Pedestrian detection with unsupervised multi-stage feature learning
 LeCunn's group. use sparse coding.
