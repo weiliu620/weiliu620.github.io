@@ -42,8 +42,35 @@ This paper use pyramid matching function to calculate the matchings between feat
 - Use the cluster label as new features, and apply the pyramid matching on the spatial domain. So the histogram is in lower (2) dimension.
 - Use the matching kernel function as the similarity, and apply SVM for classification.
 
-### Some feature representation methods
+### Aggregating local descriptors into a compact image representation (VLAD)
+This paper propose an efficient method to query a test image and find the best matched images in the database. To do that, we need to represent samples in database with a feature vector, then reduce the dimension of the feature vector, then *index* the feature vector with a binary vector.
 
-Bag of Features/Visual words
+*Bag of Features/Visual words*: First build a codebook with methods like K-Means on training set. Given a test image, extract the feature descriptor and project it onto the centroid of the clusters, and get the class assignment label. Build the histogram of this class assignment labels with all feature descriptors, and use this histogram as the final feature of current image.
 
-Fisher Vector:
+*Fisher vector*: First train a parametric model (such as GMM) from training set. The feature descriptor is defined as the the gradient of sample's likelihood with respect to the parameters.
+
+The VLAD is a simplification of Fisher vector. Again, we learn a codebook from training data. Then for each feature descriptor defined on the input image, we calculate the residual or the distance of the descriptor from the closest code, and sum over all feature descriptors for each cluster. Then we concatenate all $$K$$ feature descriptor sums. So if originally using SIFT feature of length 128, the total VLAD feature vector will be $$K\times 128$$ dimension.
+
+The next step is to convert the feature vector to a binary code. The paper claims that the product quantization based search method is better than locality sensitivity hashing method. There are two possible errors: one is introduced during dimension reduction, and the second one is introduced during quantization. For quantization, the input feature vector is not quantized, but the image in database are quantized by a $$q$$ function. The squared loss function is decomposed by the sum over the squared loss for each smaller component between input $$x$$ and database image $$q(y)$$. (One thing is not clear, why input $$x$$ is not quantized? $$x$$ is real numbers while $$q(y)$$ is binary).
+
+The paper also talked about optimal choice of the target dimension of PCA, to achieve the trade-off between two errors.
+
+Overall, it seems the VLAD descriptor is the main contribution of this paper.
+
+### Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition
+
+The paper pointed out the steps of standard steps of image classification and object detection tasks:
+
+- Extract features. Traditional methods may find interest points, and only extract features on those sparse points. There are dense SIFT that probably extract feature vectors at each pixel. Modern convnet can also been seen as a feature extraction step if we use the output of the last convolution layer.
+
+- Encoding, such as vector quantization, sparse coding, Fisher kernels.
+
+- Merging. Can be bag of words, or spatial pyramid pooling.
+
+Pyramid matching kernel defines the histogram in feature space, spatial pyramid pooling define the histogram on image space. Also, PMK use the original feature vectors, while SPM uses the quantized features (a set of (x, y) points for each type of feature).
+
+SPP uses original features without quantization. In this sense, it is similar to PMK. But SPP define the histogram on image domain (hence the 'spatial' in SPP), and in this sense is similar to SPM.
+
+If the size of the codebook is $$M$$ (as defined in SPM paper), then the length of the pooled feature vector is also of length $$M$$ (I believe). The paper also pointed out that at the highest level, the spatial histogram only has one bin. For each feature, we just average the feature's value (a real number) across spatial domain. And this is equivalent to the 'global average pooling'.
+
+The actual implementation is usually done similar to max-pooling layer. 
